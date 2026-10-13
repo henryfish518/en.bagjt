@@ -6,15 +6,16 @@ import sitemap from '@astrojs/sitemap';
 /**
  * 生产域名（用于 sitemap / canonical / hreflang 绝对地址）
  *
- * ============================ 【需确认】 ============================
- * 这里默认使用 bagjt.com 的中东子域名。若你已注册独立域名
- * （例如 bagjt.ae / bagjt-me.com），改这一处即可，同时记得同步修改：
- *   - src/config.ts 中的 SITE.url
- *   - public/robots.txt 中的 Host 与 Sitemap
- *   - public/og-*.svg 中的域名文字（可选）
+ * ===================== 【已确定：ar.bagjt.com】 =====================
+ * 本站已部署到 Cloudflare Pages 并绑定域名 https://ar.bagjt.com。
+ * 改域名时，以下 4 处必须同步（缺一处就会产生跨域名 SEO 冲突）：
+ *   - astro.config.mjs 中的 SITE（本处，驱动 sitemap / canonical / og:url）
+ *   - src/config.ts 中的 SITE.url（驱动 hreflang 与 JSON-LD）
+ *   - public/robots.txt 中的 Sitemap 行
+ *   - src/i18n/{ar,en}.json 中的 meta.domain 与 contact.siteValue（页面可见文字）
  * ====================================================================
  */
-export const SITE = 'https://me.bagjt.com';
+export const SITE = 'https://ar.bagjt.com';
 
 export default defineConfig({
   site: SITE,

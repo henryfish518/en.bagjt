@@ -1,4 +1,4 @@
-# robots.txt — me.bagjt.com（中东站 · 阿拉伯语 / 英语）
+# robots.txt — ar.bagjt.com（中东站 · 阿拉伯语 / 英语）
 # 目标：方便 Google 收录，同时明确多语言（RTL）站点结构
 
 User-agent: *
@@ -19,4 +19,4 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
-Sitemap: https://me.bagjt.com/sitemap-index.xml
+Sitemap: https://ar.bagjt.com/sitemap-index.xml

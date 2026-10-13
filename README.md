@@ -1,7 +1,8 @@
-# bagjt-me —— 中东站（阿拉伯语 / 英语 · RTL）
+# bagjt-me-ar —— 中东站（阿拉伯语 / 英语 · RTL）
 
 > 佛山鸿运江天包装材料有限公司 · 吨袋（FIBC）外贸站 · 中东市场版本
 > 技术栈：Astro 5 + Tailwind CSS 3 + Content Collections（纯静态导出）
+> 生产地址：**https://ar.bagjt.com**（Cloudflare Pages）
 
 本站是从俄罗斯站（`E:\site\bagjt-site`）复制并本地化而来，**目录结构与代码组织完全一致**，
 便于两个站点并行维护。主要差异见下方「与俄罗斯站的差异」。
@@ -11,7 +12,7 @@
 ## 一、快速开始
 
 ```bash
-cd E:\site\bagjt-me
+cd E:\site\bagjt-me-ar
 npm install
 npm run dev      # 本地开发 http://localhost:4321
 npm run build    # 打包到 dist/
@@ -24,7 +25,7 @@ npm run preview  # 预览打包结果
 
 ## 二、与俄罗斯站的差异
 
-| 项目 | 俄罗斯站 bagjt-site | 中东站 bagjt-me |
+| 项目 | 俄罗斯站 bagjt-site | 中东站 bagjt-me-ar |
 |---|---|---|
 | 默认语言 | `ru` | **`ar`（阿拉伯语）** |
 | 语言 | ru / en | **ar / en** |
@@ -34,14 +35,14 @@ npm run preview  # 预览打包结果
 | 目标市场 | 俄罗斯 / 中亚 | **沙特、阿联酋、埃及、伊拉克 + 中东北非（MENA）** |
 | 结构化数据 areaServed | RU/KZ/UZ/KG/TJ/TM | **15 个中东北非国家（见 `src/config.ts`）** |
 | 端口 / 船期文案 | 俄线、中亚 | **Jebel Ali / Dammam / Alexandria / Umm Qasr** |
-| 域名 | `bagjt.com` | `me.bagjt.com`（⚠️ 待确认，见下） |
+| 域名 | `bagjt.com` | **`ar.bagjt.com`（Cloudflare Pages）** |
 
 ---
 
 ## 三、目录结构
 
 ```
-bagjt-me/
+bagjt-me-ar/
 ├── astro.config.mjs        # site / i18n(ar,en) / sitemap
 ├── tailwind.config.mjs     # 品牌色 + 阿拉伯语字体栈
 ├── .cnb.yml                # CNB 流水线（⚠️ 首次启用前必须改 COS 桶）
@@ -129,27 +130,41 @@ bagjt-me/
 - `canonical`：按 `Astro.site + pathname` 生成绝对地址。
 - `sitemap-index.xml`：由 `@astrojs/sitemap` 生成，带 i18n 备用链接，`/` 跳转页不入 sitemap。
 - 结构化数据：`Organization` + `areaServed`（中东 15 国）+ `availableLanguage: [ar, en, zh]`。
-- `robots.txt`：`Host` 与 `Sitemap` 已指向 `me.bagjt.com`（换域名记得同步改）。
+- `robots.txt`：`Sitemap` 已指向 `https://ar.bagjt.com/sitemap-index.xml`（换域名记得同步改）。
 - 每页独立的 `og:image`（`/og-default.svg`、`/og-products.svg`、`/og-about.svg`、`/og-contact.svg`）。
 
 ---
 
-## 七、部署（CNB → COS）
+## 七、部署（Cloudflare Pages）
 
-`.cnb.yml` 已按俄罗斯站的形式写好，但**首次启用前必须确认**：
+本站实际部署方式：**GitHub 仓库 `henryfish518/bagjt-me-ar` → Cloudflare Pages → 自定义域名 `ar.bagjt.com`**。
 
-1. `imports` 指向 `me_bagjt.yml` —— 需要在 CNB 的 `wenjian` 仓库里新建这个密钥组文件
-   （形式同 `ru_bagjt.yml`），并把 `COS_BUCKET` 换成本站自己的桶；
-2. 确认 `COS_BUCKET` / `COS_REGION` 不是俄罗斯站的桶，**否则会把中东站覆盖到 bagjt.com**；
-3. 若中东站走 Cloudflare Pages，可直接删掉 `.cnb.yml`，改用 Pages 的 Git 集成。
+- 构建命令 `npm run build`，输出目录 `dist`，纯静态，无需环境变量；
+- 域名在 Cloudflare Pages 控制台的「自定义域」绑定，**不需要** `public/CNAME` 文件；
+- 仓库里的 `.cnb.yml` 是早期从俄罗斯站复制的 CNB 流水线模板，**当前未启用**。
+  若确定不再走 CNB + COS，可直接删除该文件，避免以后误触发覆盖俄罗斯站的桶。
 
 ---
 
-## 八、待你确认的 3 件事
+## 八、域名口径（已确认）
 
-1. **域名**：当前占位为 `me.bagjt.com`。若已注册独立域名（如 `bagjt.ae`），
-   改 `astro.config.mjs` + `src/config.ts` + `public/robots.txt` 三处即可。
-2. **联系方式**：`src/config.ts` 里的 WhatsApp / 邮箱目前沿用中文官网公开信息，
+生产域名为 **`https://ar.bagjt.com`**，以下 4 处必须保持一致，改域名时同步修改：
+
+| 位置 | 作用 |
+|---|---|
+| `astro.config.mjs` → `SITE` | sitemap / canonical / og:url |
+| `src/config.ts` → `SITE.url` | hreflang / JSON-LD |
+| `public/robots.txt` → `Sitemap:` | 爬虫发现 sitemap |
+| `src/i18n/{ar,en}.json` → `meta.domain`、`contact.siteValue` | 页面可见的「Website」文字 |
+
+> 自检命令：`npm run build` 后执行
+> `grep -ro "ar.bagjt.com" dist | wc -l`（应 > 0）与 `grep -ro "me.bagjt.com" dist | wc -l`（应为 0）。
+
+---
+
+## 九、待你确认的 2 件事
+
+1. **联系方式**：`src/config.ts` 里的 WhatsApp / 邮箱目前沿用中文官网公开信息，
    建议为中东业务单独配一个国际邮箱（如 `sales@bagjt.com`）与 WhatsApp Business 号。
-3. **真实图片**：见 `src/assets/images/README.md`，可直接复用俄罗斯站产品图
+2. **真实图片**：见 `src/assets/images/README.md`，可直接复用俄罗斯站产品图
    （注意替换掉图中的俄文标注）。
