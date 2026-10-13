@@ -1,0 +1,211 @@
+---
+/**
+ * Header —— 顶部导航栏（RTL 友好）
+ * -----------------------------------------------------------------------------
+ *  - 顶部细条：品牌标语 + WhatsApp / 邮箱 / 联系我们（中东市场以 WhatsApp 为主）
+ *  - 左侧（逻辑起点）：Logo + 公司简称
+ *  - 中间：主导航（首页 / 产品 / 新闻 / 关于我们 / 联系我们）
+ *  - 右侧（逻辑终点）：AR / EN 语言切换器 + "询价" CTA
+ *  - 移动端：汉堡菜单（纯 CSS + 少量原生 JS，无框架依赖）
+ *
+ * RTL 说明：所有左右方向类都使用逻辑属性（ps/pe、ms/me、start/end），
+ * 因此在 <html dir="rtl"> 下会自动镜像，无需重复写一套样式。
+ */
+import {
+  useTranslations,
+  getLocalizedPath,
+  getOtherLocale,
+  LOCALE_SHORT,
+  LOCALE_LABEL,
+  type Locale,
+} from '@/i18n';
+import { NAV_ITEMS, whatsappLink, mailtoLink, CONTACT } from '@/config';
+
+interface Props {
+  locale: Locale;
+  slug?: string;
+}
+
+const { locale, slug = '' } = Astro.props;
+const t = useTranslations(locale);
+const other = getOtherLocale(locale);
+
+/** 语言切换后的目标地址：保持停留在同一页面 */
+const switchHref = getLocalizedPath(other, slug);
+
+/** 当前页高亮判断 */
+const isActive = (itemSlug: string) => itemSlug === slug;
+
+const waText =
+  locale === 'ar'
+    ? 'مرحبًا! أرغب في الحصول على عرض سعر لأكياس FIBC (أكياس السوائب).'
+    : 'Hello! I would like to get a quotation for FIBC bulk bags.';
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+  <!-- 顶部细条：联系方式提示（小屏隐藏） -->
+  <div class="hidden bg-brand-700 text-white lg:block">
+    <div class="container-x flex h-9 items-center justify-between text-xs">
+      <p class="truncate font-medium tracking-wide">
+        {t.brand.tagline}
+      </p>
+      <div class="flex items-center gap-5">
+        <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 transition-colors hover:text-accent-300">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.48.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.02c0-5.19 4.23-9.41 9.42-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 0 1 2.76 6.66c0 5.19-4.23 9.42-9.43 9.42zM20.5 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.14 1.59 5.94L0 24l6.34-1.66a11.85 11.85 0 0 0 5.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.42z"/></svg>
+          WhatsApp
+        </a>
+        <a href={mailtoLink()} class="inline-flex items-center gap-1.5 transition-colors hover:text-accent-300">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m2 7 10 6 10-6" /></svg>
+          {CONTACT.email}
+        </a>
+        <a href={getLocalizedPath(locale, 'contact')} class="transition-colors hover:text-accent-300">
+          {t.common.contactUs}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-x flex h-16 items-center justify-between gap-4 lg:h-[72px]">
+    <!-- Logo -->
+    <a href={getLocalizedPath(locale)} class="flex shrink-0 items-center gap-2.5" aria-label={t.meta.siteName}>
+      <!-- 占位 Logo：可用真实 SVG/PNG 替换 public/logo.svg -->
+      <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-600 shadow-sm">
+        <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 3h8l1 4v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7l1-4Z" />
+          <path d="M7.2 7h9.6" />
+          <path d="M10.5 11h3" />
+        </svg>
+      </span>
+      <span class="flex flex-col leading-none">
+        <span class="text-[15px] font-extrabold tracking-tight text-brand-700 sm:text-base">
+          {t.brand.name}
+        </span>
+        <span class="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-500">
+          BAGJT.COM · ME
+        </span>
+      </span>
+    </a>
+
+    <!-- 桌面端主导航 -->
+    <nav class="hidden items-center gap-1 lg:flex" aria-label={locale === 'ar' ? 'التنقل الرئيسي' : 'Main navigation'}>
+      {NAV_ITEMS.map((item) => (
+        <a
+          href={getLocalizedPath(locale, item.slug)}
+          aria-current={isActive(item.slug) ? 'page' : undefined}
+          class:list={[
+            'relative rounded-md px-3.5 py-2 text-sm font-semibold transition-colors',
+            isActive(item.slug)
+              ? 'text-brand-700 after:absolute after:inset-x-3.5 after:-bottom-[1px] after:h-0.5 after:rounded-full after:bg-accent-500'
+              : 'text-slate-600 hover:bg-brand-50 hover:text-brand-700',
+          ]}
+        >
+          {t.nav[item.key]}
+        </a>
+      ))}
+    </nav>
+
+    <!-- 右侧操作区 -->
+    <div class="flex items-center gap-2">
+      <!-- ============ AR / EN 语言切换器 ============ -->
+      <div class="flex items-center rounded-lg border border-slate-200 bg-slate-50 p-0.5" role="group" aria-label={t.common.langSwitchLabel}>
+        <span
+          class="rounded-md bg-white px-2.5 py-1.5 text-xs font-bold text-brand-700 shadow-sm"
+          aria-current="true"
+        >
+          {LOCALE_SHORT[locale]}
+        </span>
+        <a
+          href={switchHref}
+          hreflang={other}
+          lang={other}
+          class="rounded-md px-2.5 py-1.5 text-xs font-bold text-slate-500 transition-colors hover:bg-white hover:text-brand-600"
+          title={`${t.common.switchTo} — ${LOCALE_LABEL[other]}`}
+        >
+          {LOCALE_SHORT[other]}
+        </a>
+      </div>
+
+      <!-- CTA -->
+      <a href={getLocalizedPath(locale, 'contact')} class="btn-accent hidden !px-4 !py-2.5 md:inline-flex">
+        {t.common.getQuote}
+      </a>
+
+      <!-- 移动端菜单按钮 -->
+      <button
+        type="button"
+        id="nav-toggle"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-brand-700 transition-colors hover:bg-brand-50 lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label={locale === 'ar' ? 'القائمة' : 'Toggle menu'}
+      >
+        <svg id="icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 移动端下拉导航 -->
+  <nav
+    id="mobile-nav"
+    class="hidden border-t border-slate-200 bg-white lg:hidden"
+    aria-label={locale === 'ar' ? 'قائمة الجوال' : 'Mobile navigation'}
+  >
+    <div class="container-x flex flex-col py-3">
+      {NAV_ITEMS.map((item) => (
+        <a
+          href={getLocalizedPath(locale, item.slug)}
+          aria-current={isActive(item.slug) ? 'page' : undefined}
+          class:list={[
+            'rounded-md px-3 py-3 text-sm font-semibold transition-colors',
+            isActive(item.slug) ? 'bg-brand-50 text-brand-700' : 'text-slate-700 hover:bg-slate-50',
+          ]}
+        >
+          {t.nav[item.key]}
+        </a>
+      ))}
+
+      <!-- 移动端联系方式 -->
+      <div class="mt-2 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-3">
+        <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" class="btn-whatsapp !px-4 !py-2.5">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.48.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.02c0-5.19 4.23-9.41 9.42-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 0 1 2.76 6.66c0 5.19-4.23 9.42-9.43 9.42zM20.5 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.14 1.59 5.94L0 24l6.34-1.66a11.85 11.85 0 0 0 5.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.42z"/></svg>
+          WhatsApp
+        </a>
+        <a href={getLocalizedPath(locale, 'contact')} class="btn-accent flex-1">
+          {t.common.getQuote}
+        </a>
+        <a
+          href={switchHref}
+          hreflang={other}
+          lang={other}
+          class="btn-outline !px-4"
+          title={`${t.common.switchTo} — ${LOCALE_LABEL[other]}`}
+        >
+          {LOCALE_SHORT[other]}
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // 移动端菜单开关（原生 JS，无框架依赖）
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      menu.classList.toggle('hidden', isOpen);
+      iconOpen?.classList.toggle('hidden', !isOpen);
+      iconClose?.classList.toggle('hidden', isOpen);
+    });
+  }
+</script>

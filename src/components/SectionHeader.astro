@@ -1,0 +1,31 @@
+---
+/**
+ * SectionHeader —— 通用章节标题（eyebrow + 主标题 + 副标题）
+ * -----------------------------------------------------------------------------
+ * align="left" 在 RTL 下自动变为“靠右对齐”，因为使用逻辑属性
+ * text-start / items-start。
+ */
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'start' | 'center';
+  /** 是否在深色背景上使用 */
+  onDark?: boolean;
+}
+
+const { eyebrow, title, subtitle, align = 'start', onDark = false } = Astro.props;
+
+const alignCls =
+  align === 'center' ? 'text-center mx-auto items-center' : 'text-start items-start';
+---
+
+<div class:list={['flex flex-col', alignCls, 'max-w-3xl']}>
+  {eyebrow && (
+    <span class:list={['eyebrow', onDark && '!text-accent-400']}>{eyebrow}</span>
+  )}
+  <h2 class:list={['section-title', onDark && '!text-white']}>{title}</h2>
+  {subtitle && (
+    <p class:list={['section-sub', onDark && '!text-brand-200']}>{subtitle}</p>
+  )}
+</div>

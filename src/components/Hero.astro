@@ -1,0 +1,148 @@
+---
+/**
+ * Hero —— 首页主视觉（深蓝工业风 · RTL 友好）
+ * -----------------------------------------------------------------------------
+ *  - 深蓝渐变背景 + 网格纹理
+ *  - 逻辑起点侧：徽标、主标语（主标语 + 橙色强调行）、副标题、双 CTA、四项数据
+ *  - 逻辑终点侧：图片位（真实图片替换 src/assets/images/hero-fibc.jpg）
+ *  - 装饰光晕使用 start-/end- 逻辑定位，RTL 下自动镜像
+ */
+import { Image } from 'astro:assets';
+import { getLocalizedPath, type Locale } from '@/i18n';
+
+interface Props {
+  locale: Locale;
+  badge: string;
+  title: string;
+  titleAccent: string;
+  subtitle: string;
+  primaryCta: string;
+  secondaryCta: string;
+  stats: Array<{ value: string; label: string }>;
+  imageAlt: string;
+  /** 浮动角标：出口目的地文案（如 “Export to the Middle East”） */
+  exportLabel: string;
+  exportRegions: string;
+  /** 图片占位提示文案 */
+  placeholderLabel: string;
+}
+
+const {
+  locale,
+  badge,
+  title,
+  titleAccent,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  stats,
+  imageAlt,
+  exportLabel,
+  exportRegions,
+  placeholderLabel,
+} = Astro.props;
+
+/* ============================================================================
+   图片占位说明
+   ----------------------------------------------------------------------------
+   真实图片请放置到：src/assets/images/hero-fibc.jpg
+   然后取消下面 import 的注释，并把占位块替换为 <Image />：
+
+   import heroImg from '@/assets/images/hero-fibc.jpg';
+   <Image src={heroImg} alt={imageAlt} widths={[480, 768, 1024]} sizes="(max-width:1024px) 100vw, 520px"
+          format="webp" quality={80} loading="eager" class="h-full w-full object-cover" />
+   ============================================================================ */
+---
+
+<section class="relative overflow-hidden bg-brand-700 text-white">
+  <!-- 背景层：渐变 + 网格纹理 + 光晕 -->
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-600 via-brand-700 to-brand-900" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+  <div class="absolute -end-24 -top-24 h-96 w-96 rounded-full bg-accent-500/20 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-32 -start-24 h-80 w-80 rounded-full bg-brand-400/20 blur-3xl" aria-hidden="true"></div>
+
+  <div class="container-x relative grid items-center gap-12 py-14 lg:grid-cols-12 lg:gap-10 lg:py-20">
+    <!-- 文案侧 -->
+    <div class="animate-fade-up lg:col-span-7">
+      <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
+        <span class="flex h-1.5 w-1.5 rounded-full bg-accent-400"></span>
+        {badge}
+      </span>
+
+      <h1 class="mt-6 text-balance text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[44px]">
+        {title}
+        <span class="mt-2 block text-accent-400">{titleAccent}</span>
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-brand-100 sm:text-lg">
+        {subtitle}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href={getLocalizedPath(locale, 'contact')} class="btn-accent !px-6 !py-3.5 text-base">
+          {primaryCta}
+          <svg class="h-4 w-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href={getLocalizedPath(locale, 'products')} class="btn-ghost-light !px-6 !py-3.5 text-base">
+          {secondaryCta}
+        </a>
+      </div>
+
+      <!-- 数据指标 -->
+      <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/15 pt-8 sm:grid-cols-4">
+        {stats.map((s) => (
+          <div>
+            <dt class="text-2xl font-extrabold tracking-tight text-accent-400 sm:text-[26px]">{s.value}</dt>
+            <dd class="mt-1 text-xs font-medium leading-snug text-brand-200 sm:text-[13px]">{s.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <!-- 图片区（占位） -->
+    <div class="animate-fade-up lg:col-span-5">
+      <div class="relative">
+        <div class="absolute -inset-3 rounded-2xl bg-gradient-to-tr from-accent-500/25 to-brand-400/20 blur-xl" aria-hidden="true"></div>
+
+        <figure class="relative overflow-hidden rounded-2xl border border-white/15 bg-brand-800 shadow-2xl">
+          <!-- ==== 图片容器：真实图片请用 <Image /> 替换以下占位块 ==== -->
+          <div class="aspect-[4/3] w-full">
+            <div class="img-placeholder !bg-brand-700/60 !text-brand-400">
+              <div class="flex flex-col items-center gap-3 px-6 text-center">
+                <svg class="h-14 w-14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <path d="m21 15-5-5L5 21" />
+                </svg>
+                <p class="text-xs font-semibold uppercase tracking-widest text-brand-400">
+                  {placeholderLabel}
+                </p>
+                <p class="max-w-[240px] text-[11px] leading-relaxed text-brand-400/80">
+                  src/assets/images/hero-fibc.jpg
+                </p>
+              </div>
+            </div>
+          </div>
+          <figcaption class="sr-only">{imageAlt}</figcaption>
+        </figure>
+
+        <!-- 浮动信息角标 -->
+        <div class="absolute -bottom-4 -start-4 hidden rounded-xl border border-white/15 bg-white p-3.5 shadow-xl sm:block">
+          <div class="flex items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-accent-50 text-accent-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </span>
+            <div class="leading-tight">
+              <p class="text-xs font-bold text-brand-700">{exportLabel}</p>
+              <p dir="ltr" class="text-[11px] font-medium text-slate-500">{exportRegions}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+/**
+ * 404 页面
+ * -----------------------------------------------------------------------------
+ * 静态站点中 404 由托管平台返回。本页以阿拉伯语（默认语言）呈现，
+ * 同时提供 AR / EN 两个语言入口。
+ */
+import MainLayout from '@/layouts/MainLayout.astro';
+import { useTranslations, type Locale, getLocalizedPath, LOCALES, LOCALE_LABEL } from '@/i18n';
+
+const locale: Locale = 'ar';
+const t = useTranslations(locale);
+---
+
+<MainLayout
+  locale={locale}
+  slug=""
+  title={`404 — ${t.notFound.title} | ${t.meta.siteName}`}
+  description={t.notFound.subtitle}
+>
+  <section class="relative flex min-h-[60vh] items-center overflow-hidden bg-brand-700 text-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-600 to-brand-900" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+
+    <div class="container-x relative py-20 text-center">
+      <p class="text-7xl font-extrabold tracking-tight text-accent-400 sm:text-9xl">404</p>
+      <h1 class="mt-6 text-2xl font-bold text-white sm:text-3xl">{t.notFound.title}</h1>
+      <p class="mx-auto mt-4 max-w-lg text-base leading-relaxed text-brand-100">
+        {t.notFound.subtitle}
+      </p>
+
+      <div class="mt-9 flex flex-wrap justify-center gap-3">
+        <a href={getLocalizedPath(locale)} class="btn-accent !px-6 !py-3.5 text-base">
+          {t.notFound.cta}
+        </a>
+        <a href={getLocalizedPath(locale, 'products')} class="btn-ghost-light !px-6 !py-3.5 text-base">
+          {t.common.viewProducts}
+        </a>
+      </div>
+
+      <div class="mt-8 flex items-center justify-center gap-3 text-sm text-brand-300">
+        {LOCALES.map((loc) => (
+          <a href={getLocalizedPath(loc)} class="underline hover:text-accent-300">
+            {LOCALE_LABEL[loc]}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,174 @@
+---
+/**
+ * MainLayout —— 全站主布局（中东站）
+ * -----------------------------------------------------------------------------
+ * 职责：
+ *  - HTML head：meta 标题/描述、canonical、hreflang 多语言备用链接（Google）
+ *  - 关键差异：<html lang="ar" dir="rtl"> —— 阿拉伯语为 RTL 布局
+ *  - Open Graph / Twitter Card
+ *  - JSON-LD 结构化数据（Organization + areaServed 覆盖中东北非）
+ *  - 引入字体（Inter 拉丁 + Noto Kufi Arabic 标题 + Cairo 正文阿拉伯语）
+ *  - 组合 Header + <slot /> + Footer + 浮动 WhatsApp 按钮
+ */
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import FloatingWhatsAppButton from '@/components/FloatingWhatsAppButton.astro';
+import { LOCALE_META, useTranslations, getAlternateLinks, type Locale } from '@/i18n';
+import { SITE, CONTACT, AREA_SERVED } from '@/config';
+
+interface Props {
+  /** 当前语言 */
+  locale: Locale;
+  /** 页面 slug：'' | 'products' | 'about' | 'contact' | 'news/xxx' */
+  slug?: string;
+  /** meta 标题（来自语言包） */
+  title: string;
+  /** meta 描述（来自语言包） */
+  description: string;
+  /** meta 关键词 */
+  keywords?: string;
+  /** OG 图片（相对 public 的路径） */
+  ogImage?: string;
+  /** 页面类型 */
+  pageType?: 'website' | 'article';
+  /** 自定义 hreflang 备用链接组（如新闻详情页按实际翻译存在情况输出）；
+   *  不传时按 slug 生成全部语言的默认组 */
+  alternates?: Array<{ hreflang: string; href: string }>;
+}
+
+const {
+  locale,
+  slug = '',
+  title,
+  description,
+  keywords = '',
+  ogImage = '/og-default.svg',
+  pageType = 'website',
+  alternates: alternatesProp,
+} = Astro.props;
+
+const t = useTranslations(locale);
+const meta = LOCALE_META[locale];
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const alternates = alternatesProp ?? getAlternateLinks(SITE.url, slug);
+const ogImageAbs = new URL(ogImage, SITE.url).href;
+
+/** Organization 结构化数据 —— 帮助搜索引擎识别企业主体与目标市场 */
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.companyEn,
+  alternateName: SITE.companyAr,
+  url: SITE.url,
+  logo: new URL('/logo.svg', SITE.url).href,
+  description: t.brand.tagline,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Foshan',
+    addressRegion: 'Guangdong',
+    addressCountry: 'CN',
+    streetAddress: CONTACT.address,
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      availableLanguage: ['ar', 'en', 'zh'],
+      areaServed: [...AREA_SERVED],
+    },
+  ],
+  knowsLanguage: ['ar', 'en'],
+  slogan: t.brand.tagline,
+};
+
+/** 跳转到主内容的无障碍链接文案（按语言） */
+const skipLabel = locale === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip to content';
+---
+
+<!doctype html>
+<html lang={meta.htmlLang} dir={meta.dir} class="scroll-pt-24">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- ============ SEO 基础标签 ============ -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonical} />
+
+    <!-- ============ hreflang 多语言备用链接（Google 收录） ============ -->
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+
+    <!-- ============ 收录与爬虫 ============ -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="author" content={SITE.companyEn} />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- ============ Open Graph ============ -->
+    <meta property="og:type" content={pageType} />
+    <meta property="og:site_name" content={t.meta.siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={meta.ogLocale} />
+    <meta
+      property="og:locale:alternate"
+      content={locale === 'ar' ? LOCALE_META.en.ogLocale : LOCALE_META.ar.ogLocale}
+    />
+
+    <!-- ============ Twitter Card ============ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <!-- ============ 字体：Inter（拉丁）+ Noto Kufi Arabic（标题）+ Cairo（正文阿拉伯语） ============ -->
+    <!--
+      字体回退原理：Inter 的 unicode-range 不含阿拉伯字母，
+      因此阿拉伯字符会自动落到 Noto Kufi Arabic / Cairo，无需按语言拆 CSS。
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@600;700;800&display=swap"
+    />
+
+    <!-- ============ 结构化数据 ============ -->
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+  </head>
+
+  <body class="flex min-h-screen flex-col bg-white">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+    >
+      {skipLabel}
+    </a>
+
+    <Header locale={locale} slug={slug} />
+
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer locale={locale} />
+
+    <FloatingWhatsAppButton locale={locale} />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

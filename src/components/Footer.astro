@@ -1,0 +1,205 @@
+---
+/**
+ * Footer —— 全站页脚（RTL 友好）
+ * -----------------------------------------------------------------------------
+ *  - 公司简介 + 联系方式（WhatsApp / Email / Phone / Address）
+ *  - 产品快捷入口、公司导航
+ *  - 语言切换
+ *  - 版权与 SEO 关键词行
+ */
+import {
+  useTranslations,
+  getLocalizedPath,
+  getOtherLocale,
+  LOCALE_LABEL,
+  LOCALE_SHORT,
+  type Locale,
+} from '@/i18n';
+import { CONTACT, NAV_ITEMS, whatsappLink, mailtoLink, telLink, CONTACT_CONFIGURED } from '@/config';
+import { getEntry } from 'astro:content';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const other = getOtherLocale(locale);
+
+/** 产品数据（content collection：src/content/products/{lang}.json） */
+const productsData = (await getEntry('products', locale))?.data;
+
+/** 页脚展示的产品快捷入口（取产品前 5 项） */
+const productLinks = (productsData?.items ?? []).slice(0, 5).map((p) => ({
+  name: p.name,
+  href: getLocalizedPath(locale, `products#${p.id}`),
+}));
+
+const year = new Date().getFullYear();
+
+const waText =
+  locale === 'ar'
+    ? 'مرحبًا! أرغب في الحصول على عرض سعر لأكياس FIBC (أكياس السوائب).'
+    : 'Hello! I would like to get a quotation for FIBC bulk bags.';
+
+/** 地址按语言取 */
+const address = locale === 'ar' ? CONTACT.addressAr : CONTACT.address;
+const hours = locale === 'ar' ? CONTACT.hoursAr : CONTACT.hours;
+---
+
+<footer class="mt-auto bg-brand-800 text-brand-100">
+  <div class="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-14">
+    <!-- 公司简介 -->
+    <div class="sm:col-span-2 lg:col-span-1">
+      <div class="flex items-center gap-2.5">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10">
+          <svg class="h-5 w-5 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3h8l1 4v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7l1-4Z" />
+            <path d="M7.2 7h9.6" />
+            <path d="M10.5 11h3" />
+          </svg>
+        </span>
+        <span class="text-base font-extrabold text-white">{t.brand.name}</span>
+      </div>
+      <p class="mt-4 text-sm leading-relaxed text-brand-200">
+        {t.footer.about}
+      </p>
+      <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-accent-400">
+        {t.brand.tagline}
+      </p>
+    </div>
+
+    <!-- 产品 -->
+    <nav aria-label={t.footer.productsTitle}>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-white">{t.footer.productsTitle}</h3>
+      <ul class="mt-4 space-y-2.5">
+        {productLinks.map((p) => (
+          <li>
+            <a href={p.href} class="text-sm text-brand-200 transition-colors hover:text-accent-300">
+              {p.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={getLocalizedPath(locale, 'products')} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent-300 transition-colors hover:text-accent-200">
+            {t.common.viewProducts}
+            <svg class="h-3.5 w-3.5 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- 公司导航 + 语言 -->
+    <nav aria-label={t.footer.companyTitle}>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-white">{t.footer.companyTitle}</h3>
+      <ul class="mt-4 space-y-2.5">
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a href={getLocalizedPath(locale, item.slug)} class="text-sm text-brand-200 transition-colors hover:text-accent-300">
+              {t.nav[item.key]}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="mt-7 text-sm font-bold uppercase tracking-wider text-white">{t.footer.languageTitle}</h3>
+      <div class="mt-3 flex items-center gap-2">
+        <span class="rounded-md bg-white/10 px-2.5 py-1.5 text-xs font-bold text-white">
+          {LOCALE_SHORT[locale]}
+        </span>
+        <a
+          href={getLocalizedPath(other)}
+          hreflang={other}
+          lang={other}
+          class="rounded-md border border-white/20 px-2.5 py-1.5 text-xs font-bold text-brand-200 transition-colors hover:border-accent-400 hover:text-accent-300"
+        >
+          {LOCALE_SHORT[other]} · {LOCALE_LABEL[other]}
+        </a>
+      </div>
+    </nav>
+
+    <!-- 联系方式 -->
+    <div>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-white">{t.footer.contactTitle}</h3>
+      <ul class="mt-4 space-y-4 text-sm">
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" />
+          </svg>
+          <span class="text-brand-200">
+            <span class="block text-xs font-semibold uppercase tracking-wide text-brand-300">{t.contact.info.companyLabel}</span>
+            <span dir="auto">{t.meta.siteName}</span>
+          </span>
+        </li>
+
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span class="text-brand-200">
+            <span class="block text-xs font-semibold uppercase tracking-wide text-brand-300">{t.contact.info.addressLabel}</span>
+            <span dir="auto">{address}</span>
+          </span>
+        </li>
+
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m2 7 10 6 10-6" />
+          </svg>
+          <span class="text-brand-200">
+            <span class="block text-xs font-semibold uppercase tracking-wide text-brand-300">{t.contact.info.emailLabel}</span>
+            {CONTACT_CONFIGURED.email ? (
+              <a href={mailtoLink()} dir="ltr" class="break-all hover:text-accent-300">{CONTACT.email}</a>
+            ) : (
+              <span class="italic text-brand-300">{t.contact.info.emailValue}</span>
+            )}
+          </span>
+        </li>
+
+        <!-- 营业时间 -->
+        <li class="flex gap-3">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          <span class="text-brand-200">
+            <span class="block text-xs font-semibold uppercase tracking-wide text-brand-300">{t.contact.info.hoursLabel}</span>
+            <span dir="auto">{hours}</span>
+          </span>
+        </li>
+
+        <!-- WhatsApp + 电话 并排紧凑布局 -->
+        <li class="grid grid-cols-2 gap-3">
+          <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 rounded-lg bg-white/5 px-3 py-2.5 transition-colors hover:bg-white/10">
+            <svg class="h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.48.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.38 9.38 0 0 1-1.44-5.02c0-5.19 4.23-9.41 9.42-9.41 2.52 0 4.88.98 6.66 2.76a9.35 9.35 0 0 1 2.76 6.66c0 5.19-4.23 9.42-9.43 9.42zM20.5 3.49A11.8 11.8 0 0 0 12.05 0C5.5 0 .17 5.33.17 11.88c0 2.09.55 4.14 1.59 5.94L0 24l6.34-1.66a11.85 11.85 0 0 0 5.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.16-3.48-8.42z"/>
+            </svg>
+            <span class="min-w-0">
+              <span class="block text-[10px] font-semibold uppercase tracking-wide text-brand-300">WhatsApp</span>
+              <span dir="ltr" class="block text-xs text-brand-100">{CONTACT.whatsappDisplay}</span>
+            </span>
+          </a>
+          <a href={telLink()} class="flex items-center gap-2 rounded-lg bg-white/5 px-3 py-2.5 transition-colors hover:bg-white/10">
+            <svg class="h-4 w-4 shrink-0 text-accent-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" />
+            </svg>
+            <span class="min-w-0">
+              <span class="block text-[10px] font-semibold uppercase tracking-wide text-brand-300">{t.contact.info.phoneLabel}</span>
+              <span dir="ltr" class="block text-xs text-brand-100">{CONTACT.whatsappDisplay}</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 底部版权 -->
+  <div class="border-t border-white/10">
+    <div class="container-x flex flex-col gap-3 py-5 text-xs text-brand-300 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {t.meta.siteName}. {t.common.copyright}</p>
+      <p dir="auto" class="text-brand-400">{t.footer.keywords}</p>
+    </div>
+  </div>
+</footer>

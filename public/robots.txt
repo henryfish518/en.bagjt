@@ -1,0 +1,22 @@
+# robots.txt — me.bagjt.com（中东站 · 阿拉伯语 / 英语）
+# 目标：方便 Google 收录，同时明确多语言（RTL）站点结构
+
+User-agent: *
+Allow: /
+
+# 禁止抓取构建产物中的无关文件
+Disallow: /_astro/
+Disallow: /*.json$
+
+# --- Google ---
+User-agent: Googlebot
+Allow: /
+
+# --- 中东地区常用搜索引擎 / 国际引擎 ---
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+Sitemap: https://me.bagjt.com/sitemap-index.xml

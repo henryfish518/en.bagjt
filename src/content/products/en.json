@@ -1,0 +1,304 @@
+{
+  "specs": [
+    {
+      "key": "Material",
+      "value": "Polypropylene (PP) / HDPE"
+    },
+    {
+      "key": "Load capacity",
+      "value": "500 kg ~ 2000 kg"
+    },
+    {
+      "key": "Safety factor",
+      "value": "5:1 / 6:1"
+    },
+    {
+      "key": "Customization",
+      "value": "Size, fabric weight, printing, liner, UV protection"
+    }
+  ],
+  "items": [
+    {
+      "id": "universal",
+      "name": "Universal Bulk Bags",
+      "short": "The base series for most bulk cargo. Our most popular model, always available in stock.",
+      "description": "The universal bulk bag is our base and most popular series. It suits the majority of free-flowing materials: chemical raw materials, mineral powders, grain and feed. Standard sizes are always kept in stock, so lead time is short. Various top options (open, duffle, filling spout) and bottom options (flat, discharge spout) are available.",
+      "features": [
+        "Popular sizes always available in stock",
+        "Top options: open / duffle / filling spout",
+        "Bottom options: flat / discharge spout",
+        "Double-weft fabric, 4 or 6 lifting loops"
+      ],
+      "applications": "Chemical raw materials, mineral powders, cement, grain, feed",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "Polypropylene (PP) / HDPE"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        },
+        {
+          "key": "Popular sizes",
+          "value": "90×90×110 cm (best seller), 90×90×120, 100×100×100, 100×100×120, 110×110×110 cm"
+        }
+      ],
+      "imageAlt": "Universal FIBC bulk bag for free-flowing materials"
+    },
+    {
+      "id": "food-grade",
+      "name": "Food Grade Bulk Bags",
+      "short": "Virgin material approved for food contact. For flour, sugar, salt and starch.",
+      "description": "Food grade bulk bags are made from virgin material approved for direct food contact. The construction meets food safety requirements, supported by ISO 22000 food safety management certification. They are used for packing flour, sugar, salt, starch, food additives, grain, pulses, dates and animal feed.",
+      "features": [
+        "Virgin material approved for food contact",
+        "White finish, specially for food products",
+        "Complies with GB/T 10454-2000 standard",
+        "ISO 22000 food safety management certification"
+      ],
+      "applications": "Flour, sugar, salt, starch, spices, dates, food additives, grain, pulses, nuts, feed",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "Virgin food grade polypropylene / HDPE"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        },
+        {
+          "key": "Quality standard",
+          "value": "GB/T 10454-2000, ISO 22000"
+        }
+      ],
+      "imageAlt": "Food grade bulk bag for flour and sugar"
+    },
+    {
+      "id": "heavy-duty",
+      "name": "Heavy Duty Bulk Bags",
+      "short": "Reinforced fabric and loops for heavy, dense cargo. 2, 4 or 6 loops with reinforced base.",
+      "description": "The heavy duty series is designed for heavy and dense materials where ordinary fabric works at its limit. We increase the fabric density, use reinforced seams and 2, 4 or 6 lifting loops, plus a reinforced base to spread the load evenly. This allows safe transport of loads up to 2.5 tonnes.",
+      "features": [
+        "High-density double-weft fabric",
+        "2, 4 or 6 reinforced lifting loops",
+        "Reinforced base for even load distribution",
+        "1.3 t / 1.5–2 t / 2–2.5 t versions"
+      ],
+      "applications": "Ore, crushed stone, silica sand, metal powder, dense minerals, refractories",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "High-density polypropylene"
+        },
+        {
+          "key": "Load capacity",
+          "value": "1300 kg / 1500–2000 kg / 2000–2500 kg"
+        },
+        {
+          "key": "Lifting loops",
+          "value": "2, 4 or 6, with reinforced base"
+        }
+      ],
+      "imageAlt": "Heavy duty bulk bag for dense cargo"
+    },
+    {
+      "id": "inner-baffle",
+      "name": "Bulk Bags with Inner Baffles",
+      "short": "Inner baffles keep a cube shape when partly filled — up to 30% more bags per container.",
+      "description": "Bulk bags with inner baffles (internal partitions) keep a cube shape even when only partly filled. This is a key advantage for container shipping: bags do not bulge or collapse, they stack stably on pallets and in the warehouse, allowing up to 30% more units per container and reducing transport cost per tonne.",
+      "features": [
+        "Inner baffles maintain cube shape",
+        "Up to 30% more bags per container",
+        "Stable pallet and warehouse stacking",
+        "Lower logistics cost per tonne"
+      ],
+      "applications": "Resins, chemical powders, food ingredients, additives",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "Polypropylene (PP)"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        },
+        {
+          "key": "Construction",
+          "value": "Internal fabric baffles"
+        }
+      ],
+      "imageAlt": "Bulk bag with inner baffles"
+    },
+    {
+      "id": "acid-alkali",
+      "name": "Acid & Alkali Resistant Bulk Bags",
+      "short": "Special fabric and coating for aggressive chemical environments.",
+      "description": "For packing aggressive chemical products we produce acid and alkali resistant bulk bags. A special fabric and protective coating resistant to acids and alkalis is used, preventing bag degradation and product contamination during long-term storage and transport.",
+      "features": [
+        "Fabric and coating resistant to acids and alkalis",
+        "Prevents bag degradation in aggressive environments",
+        "Optional inner liner for extra protection",
+        "Suitable for long-term storage"
+      ],
+      "applications": "Chemical reagents, acids, alkalis, aggressive powders, fertilizers",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "Polypropylene with acid/alkali resistant coating"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        },
+        {
+          "key": "Optional",
+          "value": "Inner PE liner on request"
+        }
+      ],
+      "imageAlt": "Acid and alkali resistant bulk bag for chemicals"
+    },
+    {
+      "id": "heat-resistant",
+      "name": "Heat Resistant Container Bags",
+      "short": "Withstand loading of material at elevated temperature.",
+      "description": "Heat resistant container bags are designed for packing products at elevated temperature — for example after drying, calcination or hot grinding. A fabric resistant to thermal impact is used, preventing deformation and failure of the bag when hot material is loaded.",
+      "features": [
+        "Resistant to elevated material temperature",
+        "Seam strength retained under heat",
+        "Liner options available",
+        "Popular sizes made to order"
+      ],
+      "applications": "Calcined materials, cement, lime, hot grinding, refractory powders",
+      "specs": [
+        {
+          "key": "Material",
+          "value": "Heat resistant polypropylene"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        },
+        {
+          "key": "Application",
+          "value": "Loading of elevated-temperature material"
+        }
+      ],
+      "imageAlt": "Heat resistant container bag for hot materials"
+    },
+    {
+      "id": "type-d",
+      "name": "Conductive Container Bags TYPE-D",
+      "short": "Dissipative fabric, no grounding required. For combustible dust in high-risk areas.",
+      "description": "The TYPE-D container bag is made from dissipative fabric that disperses static charge without the need for grounding. This is a convenient and reliable solution for packing products that generate combustible dust, where a grounding circuit cannot be provided. It reduces the risk of ignition from static discharge.",
+      "features": [
+        "TYPE-D dissipative fabric",
+        "No grounding required",
+        "Reduced ignition risk from static discharge",
+        "For areas with combustible dust"
+      ],
+      "applications": "Chemical powders, combustible dust, polymer granules, solvents",
+      "specs": [
+        {
+          "key": "Type",
+          "value": "TYPE-D (dissipative fabric)"
+        },
+        {
+          "key": "Grounding",
+          "value": "Not required"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        }
+      ],
+      "imageAlt": "TYPE-D conductive container bag"
+    },
+    {
+      "id": "type-c",
+      "name": "Antistatic Container Bags TYPE-C",
+      "short": "Conductive threads with grounding point. Maximum static protection level.",
+      "description": "The TYPE-C container bag is made from fabric with interwoven conductive threads connected to a grounding point. When correctly connected to a grounding circuit, it provides continuous static discharge and the highest level of protection when handling combustible powders and in environments with a high ignition risk.",
+      "features": [
+        "TYPE-C interwoven conductive threads",
+        "Grounding point — continuous charge dissipation",
+        "Highest level of antistatic protection",
+        "Complies with international FIBC safety practice"
+      ],
+      "applications": "Chemical powders, solvents, flammable substances, paints and coatings",
+      "specs": [
+        {
+          "key": "Type",
+          "value": "TYPE-C (conductive threads)"
+        },
+        {
+          "key": "Grounding",
+          "value": "Required"
+        },
+        {
+          "key": "Load capacity",
+          "value": "500 kg – 2000 kg"
+        }
+      ],
+      "imageAlt": "TYPE-C antistatic container bag"
+    }
+  ],
+  "specTableRows": [
+    {
+      "key": "Material",
+      "value": "Polypropylene / HDPE (virgin grade for food contact)"
+    },
+    {
+      "key": "Series",
+      "value": "Universal, food grade, heavy duty, inner baffle, acid & alkali resistant, heat resistant, TYPE-C, TYPE-D"
+    },
+    {
+      "key": "Load capacity",
+      "value": "500 kg – 2000 kg (heavy duty series up to 2500 kg)"
+    },
+    {
+      "key": "Safety factor",
+      "value": "5:1 / 6:1"
+    },
+    {
+      "key": "Size",
+      "value": "90×90×110 cm (best seller), 90×90×120, 90×90×95, 100×100×100, 100×100×120, 100×100×130, 100×100×140, 110×110×110, 80×80×80 cm; other sizes on request"
+    },
+    {
+      "key": "Fabric weight",
+      "value": "Double-weft fabric, 60–220 gsm"
+    },
+    {
+      "key": "Lifting loops",
+      "value": "2, 4 or 6 loops; reinforced base optional"
+    },
+    {
+      "key": "Top option",
+      "value": "Open / duffle top / filling spout"
+    },
+    {
+      "key": "Bottom option",
+      "value": "Flat / discharge spout"
+    },
+    {
+      "key": "Color",
+      "value": "Blue (standard), white (for food products)"
+    },
+    {
+      "key": "Liner",
+      "value": "None / PE liner / aluminum liner"
+    },
+    {
+      "key": "Printing",
+      "value": "Custom logo and marking, up to 4 colors"
+    },
+    {
+      "key": "Quality standard",
+      "value": "GB/T 10454-2000; ISO 9001; ISO 22000 (food grade)"
+    },
+    {
+      "key": "Packaging",
+      "value": "100 pcs per pallet, moisture-proof packing"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "bagjt-me",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd - FIBC bulk bag manufacturer. Middle East (AR/EN, RTL) static export website.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.1.1",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17"
+  }
+}

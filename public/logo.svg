@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" width="240" height="64" role="img" aria-label="Hongyun Jiangtian Packaging Materials">
+  <rect width="240" height="64" fill="none"/>
+  <rect x="6" y="12" width="40" height="40" rx="10" fill="#193b70"/>
+  <g fill="none" stroke="#f27c22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 22h14l1.8 7v16.8a2.8 2.8 0 0 1-2.8 2.8h-12a2.8 2.8 0 0 1-2.8-2.8V29L19 22Z"/>
+    <path d="M18 29h16"/>
+    <path d="M23.5 34.5h7"/>
+  </g>
+  <text x="58" y="34" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="17" font-weight="800" fill="#193b70">Hongyun Jiangtian</text>
+  <text x="58" y="50" font-family="Inter, Noto Sans, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.6" fill="#f27c22">BAGJT.COM</text>
+</svg>

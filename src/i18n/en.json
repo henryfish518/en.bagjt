@@ -1,0 +1,598 @@
+{
+  "meta": {
+    "siteName": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
+    "siteShortName": "Hongyun Jiangtian",
+    "domain": "me.bagjt.com",
+    "defaultLocale": "ar"
+  },
+  "common": {
+    "langSwitchLabel": "Language",
+    "switchTo": "العربية",
+    "switchToShort": "AR",
+    "getQuote": "Request a Quote",
+    "contactUs": "Contact Us",
+    "viewProducts": "View Products",
+    "learnMore": "Learn more",
+    "backHome": "Back to home",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "workingHours": "Working hours",
+    "breadcrumbHome": "Home",
+    "placeholderNote": "This field is reserved — please fill in your real number / address.",
+    "copyright": "All rights reserved."
+  },
+  "brand": {
+    "name": "Hongyun Jiangtian",
+    "fullName": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
+    "tagline": "FIBC Bulk Bag Manufacturer from China. Supply to the Middle East"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "news": "News",
+    "about": "About Us",
+    "contact": "Contact"
+  },
+  "home": {
+    "meta": {
+      "title": "FIBC Bulk Bag Manufacturer from China | Supply to the Middle East — Hongyun Jiangtian",
+      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd is a professional PP FIBC big bag manufacturer in China. Custom size, load capacity, conductive and food-grade bulk bags. Stable supply to Saudi Arabia, the UAE, Egypt, Iraq and the wider Middle East, with strict quality control.",
+      "keywords": "FIBC, big bag, bulk bag, jumbo bag, PP woven bag, China manufacturer, Saudi Arabia, UAE, Dubai, Egypt, Iraq, Middle East, food grade, conductive bag"
+    },
+    "hero": {
+      "badge": "Direct from factory · 5 own plants · Since 2008",
+      "title": "FIBC Bulk Bag Manufacturer from China",
+      "titleAccent": "Supply to the Middle East",
+      "subtitle": "Professional production of PP FIBC big bags and container bags. Customized dimensions, load capacity, conductive and food-grade options. Arabic and English sales support, strict quality inspection and stable delivery schedules.",
+      "primaryCta": "Request a Quote",
+      "secondaryCta": "View Products",
+      "stats": [
+        {
+          "value": "2008",
+          "label": "Year established"
+        },
+        {
+          "value": "10M+",
+          "label": "Bags per year"
+        },
+        {
+          "value": "5",
+          "label": "Own factories"
+        },
+        {
+          "value": "30+",
+          "label": "Export countries"
+        }
+      ],
+      "imageAlt": "PP FIBC bulk bags stacked in the factory warehouse"
+    },
+    "features": {
+      "eyebrow": "Why choose us",
+      "title": "A reliable FIBC supplier for Middle East buyers",
+      "subtitle": "From raw material to finished bag, every step is controlled in our own plant.",
+      "items": [
+        {
+          "title": "Own manufacturing plant",
+          "desc": "Integrated weaving, lamination, bag making and testing lines. Full control over quality and lead time."
+        },
+        {
+          "title": "Full customization",
+          "desc": "Custom dimensions, fabric weight (gsm), printing, liner, UV protection and lifting loops to match your exact specification."
+        },
+        {
+          "title": "Export-ready quality",
+          "desc": "Safety factor 5:1 / 6:1, batch testing, and documentation prepared for customs clearance in the Gulf and wider MENA region."
+        },
+        {
+          "title": "Stable delivery",
+          "desc": "Mature production planning and container loading coordination — regular shipments to Jebel Ali, Dammam, Alexandria, Umm Qasr and other ports."
+        }
+      ]
+    },
+    "products": {
+      "eyebrow": "Our products",
+      "title": "FIBC big bag solutions",
+      "subtitle": "Standard and customized bulk bags for chemicals, minerals, food, agriculture and construction materials.",
+      "cta": "See all products"
+    },
+    "applications": {
+      "eyebrow": "Applications",
+      "title": "Widely used across industries",
+      "subtitle": "Our bulk bags are used for powder, granular and flake materials in many sectors.",
+      "items": [
+        {
+          "title": "Chemicals",
+          "desc": "Resins, pigments, chemical powders, fertilizers."
+        },
+        {
+          "title": "Building materials",
+          "desc": "Cement, dry mortar, gypsum, sand, lime."
+        },
+        {
+          "title": "Grain & storage",
+          "desc": "Rice, corn, wheat, pulses, dates, nuts."
+        },
+        {
+          "title": "Mining",
+          "desc": "Ore, mineral powders, silica sand, refractories."
+        },
+        {
+          "title": "Pharmaceutical",
+          "desc": "Pharmaceutical raw materials, excipients, additives."
+        },
+        {
+          "title": "Food",
+          "desc": "Flour, sugar, salt, starch, spices, food additives."
+        }
+      ]
+    },
+    "customization": {
+      "eyebrow": "Customization",
+      "title": "Built exactly to your specification",
+      "subtitle": "Send us your drawing or specification sheet, and we will produce to your requirements.",
+      "items": [
+        {
+          "label": "Size",
+          "desc": "Custom length × width × height"
+        },
+        {
+          "label": "Load capacity",
+          "desc": "500 kg up to 2000 kg"
+        },
+        {
+          "label": "Fabric weight",
+          "desc": "60 gsm to 220 gsm PP woven fabric"
+        },
+        {
+          "label": "Printing",
+          "desc": "Up to 4 colors, your logo and branding"
+        },
+        {
+          "label": "Liner",
+          "desc": "PE liner / aluminum liner for moisture barrier"
+        },
+        {
+          "label": "UV protection",
+          "desc": "UV-stabilized fabric for outdoor storage in hot climates"
+        },
+        {
+          "label": "Conductive",
+          "desc": "Type B / Type C / Type D for flammable dust"
+        },
+        {
+          "label": "Food grade",
+          "desc": "Food-contact certified material available"
+        }
+      ]
+    },
+    "quality": {
+      "eyebrow": "Quality control",
+      "title": "Every batch is tested before shipment",
+      "subtitle": "Strict inspection at raw material, production and pre-shipment stages.",
+      "items": [
+        {
+          "title": "Raw material inspection",
+          "desc": "PP resin and fabric quality checked on arrival."
+        },
+        {
+          "title": "In-process control",
+          "desc": "Stitching strength, fabric weight and dimension verified on line."
+        },
+        {
+          "title": "Drop & tensile test",
+          "desc": "Load testing according to safety factor requirements."
+        },
+        {
+          "title": "Pre-shipment inspection",
+          "desc": "Full inspection report with photos before container loading."
+        }
+      ]
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "From enquiry to delivery",
+      "steps": [
+        {
+          "no": "01",
+          "title": "Send your requirement",
+          "desc": "Tell us size, capacity, material and quantity — or send your drawing."
+        },
+        {
+          "no": "02",
+          "title": "Quotation & sample",
+          "desc": "We quote within 24 hours and can provide a pre-production sample."
+        },
+        {
+          "no": "03",
+          "title": "Production",
+          "desc": "Order goes into production with in-line quality control."
+        },
+        {
+          "no": "04",
+          "title": "Inspection & shipping",
+          "desc": "Pre-shipment inspection, then container loading and shipping to your port."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Need a quotation for FIBC bulk bags?",
+      "subtitle": "Send us your specification and quantity — we reply within 24 hours on working days.",
+      "primary": "Contact us now",
+      "secondary": "Chat on WhatsApp"
+    }
+  },
+  "products": {
+    "meta": {
+      "title": "FIBC Big Bag Products — Standard, Conductive, Food Grade, Liner | Hongyun Jiangtian",
+      "description": "Our FIBC bulk bag and container bag range: universal, food grade, heavy duty, inner baffle, acid & alkali resistant, heat resistant, antistatic TYPE-C and conductive TYPE-D. Load capacity 500–2000 kg, custom sizes and printing. Supplied to the Middle East.",
+      "keywords": "FIBC types, universal bulk bag, food grade bulk bag, heavy duty bulk bag, inner baffle bulk bag, acid resistant bulk bag, heat resistant container bag, TYPE-C bulk bag, TYPE-D bulk bag, antistatic FIBC, bulk bag Saudi Arabia, bulk bag UAE"
+    },
+    "hero": {
+      "eyebrow": "Products",
+      "title": "FIBC bulk bag product range",
+      "subtitle": "Standard and customized bulk bags — choose the construction that fits your material, transportation and storage conditions.",
+      "imageAlt": "Various types of FIBC bulk bags"
+    },
+    "specTitle": "Standard technical parameters",
+    "list": {
+      "title": "Available constructions",
+      "subtitle": "All models can be produced in custom dimensions, fabric weight, colors and printing.",
+      "customizableLabel": "Customizable",
+      "detailTitle": "Detailed construction guide"
+    },
+    "specTable": {
+      "title": "Detailed specification range",
+      "paramLabel": "Parameter",
+      "valueLabel": "Value"
+    },
+    "card": {
+      "specsLabel": "Specifications",
+      "applicationsLabel": "Applications"
+    },
+    "cta": {
+      "title": "Not sure which FIBC type fits your product?",
+      "subtitle": "Send us your product details — our engineer will recommend the right construction.",
+      "primary": "Ask our engineer"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About Us — PP FIBC Bulk Bag Manufacturer in Foshan, China | Hongyun Jiangtian",
+      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd has been a PP FIBC bulk bag manufacturer since 2008. 5 own factories, 5 distribution warehouses, annual output over 10 million bags. ISO 9001 and SGS certified. Supplying the Middle East and North Africa.",
+      "keywords": "FIBC manufacturer China, bulk bag factory Foshan, PP big bag supplier, export to Saudi Arabia, export to UAE, packaging materials company, ISO 9001 FIBC"
+    },
+    "hero": {
+      "eyebrow": "About us",
+      "title": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
+      "subtitle": "Professional manufacturer of PP FIBC bulk bags and container bags, established in 2008. 5 own factories and 5 distribution warehouses across China, with annual output over 10 million bags. Custom sizes, antistatic TYPE-C / TYPE-D, food grade, acid & alkali resistant and heat resistant options. Strict quality control and stable delivery.",
+      "imageAlt": "Foshan Hongyun Jiangtian packaging factory workshop"
+    },
+    "intro": {
+      "title": "Who we are",
+      "paragraphs": [
+        "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd was established on 8 August 2008. We are a large plastic packaging enterprise integrating research, production and sales of container bags (FIBC bulk bags).",
+        "Our products are widely used for the outer packaging of goods in the chemical industry, mineral powders, rice, feed, compound fertilizer, cement and logistics, as well as for mattresses, sofas, fruit, vegetables and plastics.",
+        "The company has a strong manufacturing base: 5 own factories in different regions of China and 5 distribution warehouses in Guangxi, Hunan, Shaanxi and Hubei, enabling fast shipment. Modern workshops cover over 8,000 m², with annual output exceeding 10 million bags.",
+        "Our products meet SGS standards, and in 2005 we completed an order for the United States Postal Service for eco-friendly postal bags — international recognition of our quality. Products cover over 30 provinces in China and are exported to Japan, Europe, America, Africa and Southeast Asia.",
+        "We follow the principle of \"quality first, honesty and trust\". The company holds a continuous Class A tax credit rating and a foreign trade licence, allowing import and export across all commodity categories."
+      ]
+    },
+    "stats": [
+      {
+        "value": "2008",
+        "label": "Year established"
+      },
+      {
+        "value": "5",
+        "label": "Own factories"
+      },
+      {
+        "value": "10M+",
+        "label": "Bags per year"
+      },
+      {
+        "value": "30+",
+        "label": "Export countries"
+      }
+    ],
+    "advantages": {
+      "title": "Our advantages",
+      "items": [
+        {
+          "title": "Full customization",
+          "desc": "Size, fabric weight, printing, liner, UV protection, antistatic and food grade options — produced to your drawing or sample."
+        },
+        {
+          "title": "Strict quality control",
+          "desc": "Raw material check, in-process control and pre-shipment inspection with photo reports on every order. Products comply with GB/T 10454-2000."
+        },
+        {
+          "title": "Stable delivery",
+          "desc": "Five own factories and five distribution warehouses ensure short lead times and a stable shipping schedule."
+        },
+        {
+          "title": "International certification",
+          "desc": "ISO 9001 quality management, SGS, and ISO 22000 for food grade. Products meet the requirements of international customers."
+        },
+        {
+          "title": "Proven on major projects",
+          "desc": "In 2005 we fulfilled an order for the United States Postal Service. Customers include Sinopec, PetroChina, Conch Cement, COFCO and China Salt."
+        },
+        {
+          "title": "Arabic & English support",
+          "desc": "Arabic and English speaking sales support, technical answers within one working day, and a quotation within 24 hours."
+        }
+      ]
+    },
+    "equipment": {
+      "title": "Production capability",
+      "subtitle": "Full process from PP tape extrusion to finished bale. Workshop area over 8,000 m², annual output over 10 million bags.",
+      "items": [
+        {
+          "title": "Tape extrusion machine",
+          "desc": "Extrusion of PP tape from virgin material — the basis of future fabric strength."
+        },
+        {
+          "title": "Circular loom",
+          "desc": "Circular weaving for high-density tubular and flat fabric."
+        },
+        {
+          "title": "Lifting loop machine",
+          "desc": "Production of reinforced lifting loops for loads up to 2.5 t."
+        },
+        {
+          "title": "Cutting machine",
+          "desc": "Precise automatic fabric cutting to the specified dimensions."
+        },
+        {
+          "title": "Industrial sewing machine",
+          "desc": "Reinforced seams and loop attachment — the key stage for product strength."
+        },
+        {
+          "title": "Testing equipment",
+          "desc": "Fabric weight, seam strength and load testing before shipment."
+        }
+      ]
+    },
+    "quality": {
+      "title": "Quality policy",
+      "paragraphs": [
+        "We believe that for bulk packaging, safety and consistency matter more than price alone. A failed FIBC in transit means product loss, contamination and a damaged customer relationship.",
+        "Therefore every order follows a fixed quality workflow: raw material verification, in-line inspection during weaving and sewing, safety-factor load testing, and a final pre-shipment inspection with photo reports sent to the customer before container loading."
+      ],
+      "points": [
+        "Safety factor 5:1 / 6:1 verified by testing",
+        "Compliance with national standard GB/T 10454-2000",
+        "ISO 9001 certified; ISO 22000 for food grade",
+        "Photo report and inspection record before every shipment"
+      ]
+    },
+    "certifications": {
+      "title": "Certifications & recognition",
+      "subtitle": "Quality confirmed by international and government certification.",
+      "items": [
+        {
+          "title": "ISO 9001",
+          "desc": "Quality management system — confirms the stability of our production processes."
+        },
+        {
+          "title": "SGS International",
+          "desc": "PP woven bag products meet SGS standard requirements."
+        },
+        {
+          "title": "Class A tax credit rating",
+          "desc": "Awarded continuously for many consecutive years."
+        },
+        {
+          "title": "Foreign trade licence",
+          "desc": "Licensed for import and export across all commodity categories."
+        }
+      ]
+    },
+    "industries": {
+      "title": "Industries we serve",
+      "subtitle": "Our bulk bags are used across six key industries.",
+      "items": [
+        {
+          "title": "Chemicals",
+          "desc": "Resins, pigments, chemical powders, fertilizers."
+        },
+        {
+          "title": "Building materials",
+          "desc": "Cement, dry mortar, gypsum, sand, lime."
+        },
+        {
+          "title": "Grain & storage",
+          "desc": "Rice, corn, wheat, pulses, dates, nuts."
+        },
+        {
+          "title": "Mining",
+          "desc": "Ore, mineral powders, silica sand, refractories."
+        },
+        {
+          "title": "Pharmaceutical",
+          "desc": "Pharmaceutical raw materials, excipients, additives."
+        },
+        {
+          "title": "Food",
+          "desc": "Flour, sugar, salt, starch, spices, food additives."
+        }
+      ]
+    },
+    "clients": {
+      "title": "Our customers",
+      "subtitle": "We supply packaging materials to leading enterprises in China and worldwide.",
+      "items": [
+        "Sinopec",
+        "PetroChina",
+        "Conch Cement",
+        "CNBM",
+        "COFCO",
+        "China Salt"
+      ]
+    },
+    "markets": {
+      "title": "Markets we serve",
+      "subtitle": "Exporting to over 30 countries. The Middle East is one of our priority markets.",
+      "items": [
+        {
+          "region": "Saudi Arabia",
+          "desc": "Bulk bags for petrochemicals, minerals, cement and food products."
+        },
+        {
+          "region": "United Arab Emirates",
+          "desc": "Supply to Jebel Ali and other ports, with fast re-export to the GCC."
+        },
+        {
+          "region": "Egypt & North Africa",
+          "desc": "Packaging for fertilizers, agriculture and building materials."
+        },
+        {
+          "region": "Iraq, Jordan & Levant",
+          "desc": "Bulk bags for construction, chemicals and grain storage."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Looking for a long-term FIBC supplier?",
+      "subtitle": "We are happy to send a sample and a factory quotation for your evaluation.",
+      "primary": "Contact us"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact Us — FIBC Bulk Bag Supplier, Foshan China | Hongyun Jiangtian",
+      "description": "Contact Foshan Hongyun Jiangtian Packaging Materials Co., Ltd for FIBC bulk bag quotations. WhatsApp and email inquiry welcome, in Arabic or English. Factory in Foshan City, Guangdong Province, China.",
+      "keywords": "contact FIBC supplier, bulk bag quotation, WhatsApp FIBC manufacturer, Foshan packaging factory contact, FIBC supplier Middle East"
+    },
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Contact us",
+      "subtitle": "Send us your requirement — bag type, size, capacity and quantity — and we will reply with a quotation within 24 hours on working days. We answer in Arabic and English."
+    },
+    "info": {
+      "title": "Contact information",
+      "subtitle": "The fastest way to reach us is WhatsApp or email.",
+      "companyLabel": "Company",
+      "siteLabel": "Website",
+      "siteValue": "me.bagjt.com",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "[ RESERVED — fill in your WhatsApp number ]",
+      "emailLabel": "Email",
+      "emailValue": "[ RESERVED — fill in your email address ]",
+      "phoneLabel": "Phone",
+      "phoneValue": "[ RESERVED — fill in your phone number ]",
+      "addressLabel": "Address",
+      "addressValue": "Foshan City, Guangdong Province, China",
+      "hoursLabel": "Working hours",
+      "hoursValue": "Monday – Saturday, 09:00 – 18:00 (GMT+8, Beijing time)"
+    },
+    "form": {
+      "title": "Send an inquiry",
+      "subtitle": "Fill in the form below for your reference, then send it to us via WhatsApp or email. This form is for demonstration only and does not submit to a server.",
+      "noticeTitle": "Please note",
+      "noticeText": "This form is UI only — it does not send data. To make sure we receive your inquiry quickly, please copy your details and send them to us on WhatsApp or by email.",
+      "fields": {
+        "name": "Your name",
+        "namePlaceholder": "e.g. Ahmed Al-Sayed",
+        "company": "Company",
+        "companyPlaceholder": "e.g. Al Noor Trading LLC",
+        "country": "Country",
+        "countryPlaceholder": "e.g. Saudi Arabia",
+        "email": "Email",
+        "emailPlaceholder": "you@company.com",
+        "whatsapp": "WhatsApp / Phone",
+        "whatsappPlaceholder": "+966 ...",
+        "product": "Product type",
+        "productOptions": [
+          "Universal bulk bags",
+          "Food grade bulk bags",
+          "Heavy duty bulk bags",
+          "Bulk bags with inner baffles",
+          "Acid & alkali resistant bulk bags",
+          "Heat resistant container bags",
+          "Conductive container bags TYPE-D",
+          "Antistatic container bags TYPE-C",
+          "Other / not sure"
+        ],
+        "quantity": "Estimated quantity",
+        "quantityPlaceholder": "e.g. 5,000 pcs",
+        "message": "Your requirement",
+        "messagePlaceholder": "Size (L×W×H), load capacity, fabric weight, printing, liner, UV protection, target price..."
+      },
+      "submit": "Submit inquiry",
+      "submitHint": "This button does not send data. Please use WhatsApp or email below.",
+      "sendWhatsapp": "Send via WhatsApp",
+      "sendEmail": "Send via Email",
+      "copyButton": "Copy inquiry text",
+      "copied": "Copied"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "What is your minimum order quantity?",
+          "a": "Our minimum order quantity depends on the bag type and customization. For standard FIBC bags, a smaller trial order can be arranged; for fully customized printing, a higher quantity is required for cost efficiency. Please contact us with your requirement."
+        },
+        {
+          "q": "Can you produce bags according to my drawing or sample?",
+          "a": "Yes. We produce to your drawing, specification sheet or physical sample. We can also provide a pre-production sample for your confirmation before mass production."
+        },
+        {
+          "q": "What is the lead time?",
+          "a": "For standard bags, production usually takes about 15–25 days after order confirmation. For customized and printed orders, lead time may be longer. Please confirm with us at the time of order."
+        },
+        {
+          "q": "How do you guarantee quality?",
+          "a": "Every order passes raw material verification, in-process inspection and a pre-shipment inspection with photo reports. Load testing verifies the safety factor 5:1 / 6:1."
+        },
+        {
+          "q": "Do you ship to the Middle East?",
+          "a": "Yes. The Middle East is one of our main export markets. We arrange shipment to your designated port — Jebel Ali, Dammam, Alexandria, Umm Qasr and others — and we prepare the documentation required for customs clearance."
+        },
+        {
+          "q": "Do you accept OEM and custom printing?",
+          "a": "Yes. We offer OEM production and multi-color printing of your logo, brand and technical marks on the bag."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Let's talk about your FIBC project",
+      "subtitle": "Send us a message on WhatsApp or by email — we usually reply within one working day.",
+      "primary": "Chat on WhatsApp",
+      "secondary": "Send an email"
+    }
+  },
+  "footer": {
+    "about": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd, established in 2008. Manufacturer of PP FIBC bulk bags and container bags: 5 own factories, 5 warehouses, over 10 million bags per year. Exporting to 30+ countries including Saudi Arabia, the UAE, Egypt and Iraq.",
+    "productsTitle": "Products",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "languageTitle": "Language",
+    "keywords": "FIBC big bag, bulk bag, container bag, PP woven bag, jumbo bag, China manufacturer, ISO 9001, SGS, TYPE-C bulk bag, TYPE-D bulk bag, food grade bulk bag, Saudi Arabia, UAE, Middle East"
+  },
+  "news": {
+    "meta": {
+      "title": "News & Articles — FIBC Bulk Bag Manufacturing | Hongyun Jiangtian",
+      "description": "Company news and practical articles about FIBC bulk bags: production, shipments to the Middle East, trade fairs, selection and operation of FIBC containers.",
+      "keywords": "FIBC news, bulk bag articles, FIBC manufacturing, shipments to Saudi Arabia, Hongyun Jiangtian"
+    },
+    "hero": {
+      "eyebrow": "News",
+      "title": "Company news and useful articles",
+      "subtitle": "New production lines, shipments, trade fairs and practical materials about FIBC bulk bags."
+    },
+    "list": {
+      "readMore": "Read more",
+      "backToList": "All news",
+      "empty": "Articles will appear here soon."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "subtitle": "The page you are looking for does not exist or has been moved.",
+    "cta": "Back to home"
+  }
+}

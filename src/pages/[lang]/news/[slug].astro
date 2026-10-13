@@ -1,0 +1,230 @@
+---
+/**
+ * 新闻详情页 /{lang}/news/[slug]/
+ * -----------------------------------------------------------------------------
+ * 数据源：src/content/news/{ar,en}/<slug>.md
+ * 路由：文件名即 slug；两语言同名文件互为翻译对应（决定 hreflang 是否输出）。
+ * 正文渲染：Markdown → render(entry)（Astro 5 Content Layer）。
+ */
+import MainLayout from '@/layouts/MainLayout.astro';
+import CtaBand from '@/components/CtaBand.astro';
+import { getCollection, render } from 'astro:content';
+import { useTranslations, getLocalizedPath, LOCALE_META, INTL_LOCALE, type Locale } from '@/i18n';
+import { SITE } from '@/config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news', ({ data }) => !data.draft);
+  const byLang: Record<string, Map<string, (typeof posts)[number]>> = { ar: new Map(), en: new Map() };
+  for (const post of posts) {
+    const [lang, slug] = post.id.replace(/\\/g, '/').split('/');
+    byLang[lang]?.set(slug, post);
+  }
+  return Object.entries(byLang).flatMap(([lang, map]) =>
+    [...map.entries()].map(([slug, entry]) => ({ params: { lang, slug }, props: { entry } })),
+  );
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const locale = lang;
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const { title, date, description, cover } = entry.data;
+const mySlug = entry.id.replace(/\\/g, '/').split('/')[1];
+const other: Locale = locale === 'ar' ? 'en' : 'ar';
+const t = useTranslations(locale);
+
+/** hreflang：仅当另一语言存在同名文章时输出 */
+const otherPost = await getCollection(
+  'news',
+  ({ id, data }) => !data.draft && id.replace(/\\/g, '/') === `${other}/${mySlug}`,
+);
+const alternates = [
+  {
+    hreflang: LOCALE_META[locale].hreflang,
+    href: new URL(getLocalizedPath(locale, `news/${mySlug}`), SITE.url).href,
+  },
+  ...(otherPost.length > 0
+    ? [
+        {
+          hreflang: LOCALE_META[other].hreflang,
+          href: new URL(getLocalizedPath(other, `news/${mySlug}`), SITE.url).href,
+        },
+      ]
+    : []),
+];
+
+const fmt = new Intl.DateTimeFormat(INTL_LOCALE[locale], {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<MainLayout
+  locale={locale}
+  slug={`news/${mySlug}`}
+  title={title}
+  description={description}
+  ogImage={cover ?? '/og-default.svg'}
+  pageType="article"
+  alternates={alternates}
+>
+  <!-- ==================== 页头 ==================== -->
+  <section class="relative overflow-hidden bg-brand-700 text-white">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-600 to-brand-900" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+
+    <div class="container-x relative py-12 lg:py-16">
+      <nav class="mb-6 flex flex-wrap items-center gap-2 text-xs font-medium text-brand-200" aria-label="Breadcrumb">
+        <a href={getLocalizedPath(locale)} class="hover:text-accent-300">{t.common.breadcrumbHome}</a>
+        <svg class="h-3 w-3 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        <a href={getLocalizedPath(locale, 'news')} class="hover:text-accent-300">{t.nav.news}</a>
+      </nav>
+
+      <time datetime={date.toISOString()} class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-brand-100">
+        <svg class="me-1.5 h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
+        </svg>
+        {fmt.format(date)}
+      </time>
+      <h1 class="mt-4 max-w-3xl text-2xl font-extrabold leading-tight text-white sm:text-3xl lg:text-4xl">
+        {title}
+      </h1>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-brand-100 sm:text-base">
+        {description}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== 正文 ==================== -->
+  <article class="bg-white py-14 lg:py-16">
+    <div class="container-x">
+      <div class="mx-auto max-w-3xl">
+        {cover && <img src={cover} alt={title} class="mb-10 w-full rounded-xl border border-slate-100 shadow-sm" loading="lazy" />}
+
+        <!-- Markdown 正文（样式见下方 .news-body） -->
+        <div class="news-body">
+          <Content />
+        </div>
+
+        <div class="mt-12 border-t border-slate-100 pt-6">
+          <a
+            href={getLocalizedPath(locale, 'news')}
+            class="inline-flex items-center gap-2 text-sm font-bold text-brand-600 transition-colors hover:text-accent-600"
+          >
+            <svg class="h-4 w-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            {t.news.list.backToList}
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ==================== CTA ==================== -->
+  <CtaBand
+    locale={locale}
+    title={t.home.cta.title}
+    subtitle={t.home.cta.subtitle}
+    primary={t.home.cta.primary}
+    secondary={t.common.whatsapp}
+    tertiary={t.common.email}
+    primaryAction="contact"
+    secondaryAction="whatsapp"
+    tertiaryAction="email"
+  />
+</MainLayout>
+
+<style is:global>
+  /* Markdown 正文排版（详情页专用，不污染其他页面）
+     RTL 说明：缩进 / 引用条使用逻辑属性（inline-start），
+     阿拉伯语页面下自动镜像到右侧。 */
+  .news-body {
+    color: #334155;
+    font-size: 15px;
+    line-height: 1.95;
+  }
+  .news-body h2 {
+    margin: 2rem 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #193b70;
+  }
+  .news-body h3 {
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #193b70;
+  }
+  .news-body p {
+    margin: 0.85rem 0;
+  }
+  .news-body ul,
+  .news-body ol {
+    margin: 0.85rem 0;
+    padding-inline-start: 1.5rem;
+  }
+  .news-body ul {
+    list-style: disc;
+  }
+  .news-body ol {
+    list-style: decimal;
+  }
+  .news-body li {
+    margin: 0.35rem 0;
+  }
+  .news-body a {
+    color: #b45309;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .news-body strong {
+    color: #193b70;
+    font-weight: 700;
+  }
+  .news-body img {
+    margin: 1.5rem 0;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid #f1f5f9;
+  }
+  .news-body blockquote {
+    margin: 1.25rem 0;
+    border-inline-start: 4px solid #f27c22;
+    background: #fff7ed;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: #7c2d12;
+  }
+  .news-body table {
+    margin: 1.5rem 0;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: start;
+  }
+  .news-body th {
+    background: #193b70;
+    color: #fff;
+    font-weight: 600;
+  }
+  .news-body th,
+  .news-body td {
+    border: 1px solid #e2e8f0;
+    padding: 0.6rem 0.85rem;
+  }
+  .news-body tbody tr:nth-child(even) {
+    background: #f8fafc;
+  }
+  .news-body code {
+    background: #f1f5f9;
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.9em;
+  }
+  .news-body hr {
+    margin: 2rem 0;
+    border-color: #e2e8f0;
+  }
+</style>

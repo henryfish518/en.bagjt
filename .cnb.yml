@@ -1,0 +1,73 @@
+# ============================================================================
+# CNB.cool 流水线 —— bagjt-me（中东站 · 阿拉伯语/英语）
+# ----------------------------------------------------------------------------
+# ⚠️ 重要：本文件是从俄罗斯站（bagjt-site）复制后改写的「模板」，
+#    首次启用前必须确认下面 3 处，否则可能把中东站覆盖到俄罗斯站的 COS 桶！
+#
+#   1) imports 里的密钥组地址：目前指向 wenjian 仓库下的 me_bagjt.yml，
+#      该文件需要你在 CNB 的「wenjian」仓库里新建（内容形式与 ru_bagjt.yml 相同，
+#      但 COS_BUCKET 必须换成中东站自己的桶）。
+#   2) COS_BUCKET / COS_REGION 由密钥组注入，务必确认是中东站的桶。
+#   3) 若中东站不用 COS 而用 Cloudflare Pages，可直接删掉本文件。
+# ============================================================================
+
+$:
+  vscode:
+    - runner:
+        cpus: 64
+      docker:
+        image: docker.cnb.cool/workspaces/image:node
+      services:
+        - vscode
+        - docker
+      stages:
+        - name: 环境启动时安装依赖
+          script: npm install
+
+main:
+  push:
+    - runner:
+        cpus: 64
+      docker:
+        image: docker.cnb.cool/workspaces/image:node
+      imports:
+        - https://cnb.cool/66868344.cn_691/wenjian/-/blob/main/me_bagjt.yml
+      stages:
+        - name: 安装依赖
+          script: npm install
+
+        - name: 构建当前项目
+          script: npm run build
+
+        - name: 检查密钥注入（调试用，可删）
+          script: |
+            echo "COS_BUCKET: $COS_BUCKET"
+            echo "COS_REGION: $COS_REGION"
+
+        - name: 部署到cos
+          image: tencentcom/coscli
+          script: |
+            coscli config set --secret_id $COS_SECRET_ID --secret_key $COS_SECRET_KEY
+            coscli config add --init-skip=true -b $COS_BUCKET -r $COS_REGION
+            coscli sync ./dist cos://$COS_BUCKET/ -r --delete --force --routines=1000 --thread-num=1000
+
+web_trigger:
+  - runner:
+      cpus: 64
+    docker:
+      image: docker.cnb.cool/workspaces/image:node
+    imports:
+      - https://cnb.cool/66868344.cn_691/wenjian/-/blob/main/me_bagjt.yml
+    stages:
+        - name: 安装依赖
+          script: npm install
+
+        - name: 构建当前项目
+          script: npm run build
+
+        - name: 部署到cos
+          image: tencentcom/coscli
+          script: |
+            coscli config set --secret_id $COS_SECRET_ID --secret_key $COS_SECRET_KEY
+            coscli config add --init-skip=true -b $COS_BUCKET -r $COS_REGION
+            coscli sync ./dist cos://$COS_BUCKET/ -r --delete --force --routines=1000 --thread-num=1000

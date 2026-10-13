@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   全局样式 / 深蓝工业风 B2B 外贸站（中东站 · 阿拉伯语 RTL + 英语 LTR）
+   主色 #193b70 (brand-600) / 辅助色 #f27c22 (accent-500)
+
+   RTL 说明：
+   页面用 <html dir="rtl"> 切换方向，组件全部使用 Tailwind 逻辑属性
+   （ps-/pe-、ms-/me-、start-/end-、text-start/text-end），
+   因此同一套组件在 ar 与 en 下都能正确镜像。
+   下面仅保留 3 处「CSS 层面必须处理」的 RTL 细节：
+     1. 阿拉伯文字距（letter-spacing 会破坏字母连写）
+     2. 阿拉伯文行高（需比拉丁文更宽松）
+     3. 方向性箭头 / 位移的镜像
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-slate-700 font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 长单词换行保护（阿拉伯语 / 德语复合词同样需要） */
+  h1, h2, h3, h4, p, a, li, span {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-brand-700 font-bold;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-white rounded-sm;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   阿拉伯语排版校正（仅 RTL 生效）
+   1) letter-spacing：阿拉伯字母是连写的，加字距会把字母拆开，必须清零；
+   2) uppercase：阿拉伯文无大小写，保留无害；
+   3) line-height：阿拉伯文上下伸展较大，标题行高必须放宽，否则会挤压 / 裁切。
+   -------------------------------------------------------------------------- */
+[dir='rtl'] :where(h1, h2, h3, h4, p, a, li, span, dt, dd, th, td, summary, label, button, figcaption, .eyebrow) {
+  letter-spacing: normal !important;
+}
+
+[dir='rtl'] :where(h1, h2, h3, h4) {
+  line-height: 1.45 !important;
+}
+
+/* 方向性图标镜像：在 RTL 下把「→」变成「←」
+   注意：这里刻意使用独立的 CSS 属性 scale（而非 transform: scaleX(-1)），
+   因为 Tailwind 的 -translate-y-1/2 等类是通过 transform 实现的，
+   若覆盖 transform 会把垂直居中一起干掉。 */
+[dir='rtl'] .flip-rtl {
+  scale: -1 1;
+}
+
+/* 箭头微位移（hover 时沿阅读方向轻微前移） */
+.nudge-x {
+  transition: transform 0.2s ease;
+}
+.group:hover .nudge-x {
+  transform: translateX(4px);
+}
+[dir='rtl'] .group:hover .nudge-x {
+  transform: translateX(-4px);
+}
+
+@layer components {
+  /* ---- 容器 ---- */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* ---- 按钮 ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3
+           text-sm font-semibold leading-none transition-all duration-200
+           focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 active:bg-accent-700
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-brand {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800
+           shadow-sm hover:shadow-md;
+  }
+
+  /* WhatsApp 品牌绿（中东市场主沟通渠道） */
+  .btn-whatsapp {
+    @apply btn bg-[#25D366] text-white hover:bg-[#1eb959] active:bg-[#189e4b]
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-outline {
+    @apply btn border border-brand-200 bg-white text-brand-700
+           hover:border-brand-400 hover:bg-brand-50;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/40 text-white hover:bg-white/10;
+  }
+
+  /* ---- 章节标题 ---- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-accent-600;
+  }
+
+  .section-title {
+    @apply mt-3 text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-700 leading-tight;
+  }
+
+  .section-sub {
+    @apply mt-4 text-base sm:text-lg leading-relaxed text-slate-600 max-w-3xl;
+  }
+
+  /* ---- 卡片 ---- */
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-card
+           transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1 hover:border-brand-200 hover:shadow-cardHover;
+  }
+
+  /* ---- 参数表 ---- */
+  .spec-row {
+    @apply flex flex-col gap-1 border-b border-slate-100 py-3 last:border-0
+           sm:flex-row sm:items-center sm:justify-between sm:gap-6;
+  }
+
+  .spec-key {
+    @apply text-sm font-semibold text-slate-500 sm:w-2/5;
+  }
+
+  .spec-val {
+    @apply text-sm font-medium text-brand-800 sm:flex-1;
+  }
+
+  /* ---- 表单（仅 UI，无后端提交） ---- */
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-slate-700;
+  }
+
+  .field-input {
+    @apply w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm
+           text-slate-800 placeholder:text-slate-400
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25
+           transition-colors;
+  }
+
+  /* ---- 网格纹理 / 工业感背景 ---- */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(25, 59, 112, .07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(25, 59, 112, .07) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* 图片占位容器（真实图片未填充时显示） */
+  .img-placeholder {
+    @apply flex h-full w-full items-center justify-center bg-brand-50 text-brand-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* 打印友好 */
+@media print {
+  .no-print { display: none !important; }
+}

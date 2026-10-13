@@ -1,0 +1,175 @@
+---
+/**
+ * ProductCard —— 产品卡片（RTL 友好）
+ * -----------------------------------------------------------------------------
+ * 设计思路：图片位用「深蓝渐变 + 分类示意图标 + 编号」做成干净的技术感占位，
+ * 而不是写 "Photo 01" 这种尴尬提示 —— 没有真实图片时页面依然专业完整。
+ * 真实图片接入方式见 src/assets/images/README.md。
+ *
+ * RTL：编号徽标用 start-3、可定制徽标用 end-3，自动随语言镜像。
+ */
+import { Image } from 'astro:assets';
+import { getLocalizedPath, type Locale } from '@/i18n';
+
+interface Props {
+  locale: Locale;
+  id: string;
+  name: string;
+  short: string;
+  applications?: string;
+  /** 该分类的真实规格（2-3 条） */
+  specs?: Array<{ key: string; value: string }>;
+  imageAlt: string;
+  customizableLabel: string;
+  learnMoreLabel: string;
+  /** 「规格」小标题 */
+  specsLabel?: string;
+  /** 「应用」小标题 */
+  applicationsLabel?: string;
+}
+
+const {
+  locale,
+  id,
+  name,
+  short,
+  applications,
+  specs = [],
+  imageAlt,
+  customizableLabel,
+  learnMoreLabel,
+  specsLabel = locale === 'ar' ? 'المواصفات' : 'Specifications',
+  applicationsLabel = locale === 'ar' ? 'الاستخدام' : 'Applications',
+} = Astro.props;
+
+/** 编号（01, 02, ...） */
+const ORDER = [
+  'universal',
+  'food-grade',
+  'heavy-duty',
+  'inner-baffle',
+  'acid-alkali',
+  'heat-resistant',
+  'type-d',
+  'type-c',
+];
+const index = String(Math.max(1, ORDER.indexOf(id) + 1)).padStart(2, '0');
+
+/** 每个分类一个专属图标（内联 SVG path），避免所有卡片长得一样 */
+const ICONS: Record<string, string> = {
+  // 通用：基础袋型
+  universal:
+    'M8 3h8l1 4v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7l1-4ZM7.2 7h9.6M10.5 11h3',
+  // 食品级：盾牌 + 勾
+  'food-grade':
+    'M12 21s7-3.5 7-9V5.5L12 3 5 5.5V12c0 5.5 7 9 7 9ZM9 11.5l2 2 4-4',
+  // 重型：哑铃 / 加固
+  'heavy-duty':
+    'M4 8v8M20 8v8M7 6v12M17 6v12M7 12h10M2 10v4M22 10v4',
+  // 内拉筋：内部分隔
+  'inner-baffle':
+    'M8 3h8l1 4v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7l1-4ZM12 7v14M9.5 12h5',
+  // 耐酸碱：液滴 + 防护
+  'acid-alkali':
+    'M12 3s5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 5-9 5-9ZM9.5 12.5c0 1.4 1.1 2.5 2.5 2.5',
+  // 耐高温：火焰
+  'heat-resistant':
+    'M12 22c3.5 0 6-2.4 6-5.8 0-4.6-6-12.2-6-12.2S6 11.6 6 16.2C6 19.6 8.5 22 12 22ZM12 18.5c1.1 0 2-.9 2-2 0-1.6-2-4-2-4s-2 2.4-2 4c0 1.1.9 2 2 2Z',
+  // TYPE-D：闪电 + 无接地
+  'type-d':
+    'M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5Z',
+  // TYPE-C：闪电 + 接地符号
+  'type-c':
+    'M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12l1-8.5ZM8 20.5h8M9.5 22.5h5',
+};
+
+const iconPath = ICONS[id] ?? ICONS.universal;
+---
+
+<article class="card-hover group flex flex-col overflow-hidden" id={id}>
+  <!-- ==================== 图片位（技术感占位） ==================== -->
+  <div class="relative aspect-[16/10] w-full overflow-hidden">
+    <!-- 深蓝渐变底 + 网格 -->
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-600 to-brand-800"></div>
+    <div class="absolute inset-0 bg-grid opacity-50"></div>
+    <!-- 光晕 -->
+    <div class="absolute -end-10 -top-10 h-32 w-32 rounded-full bg-accent-500/20 blur-2xl"></div>
+
+    <!-- 分类图标（视觉主体） -->
+    <div class="relative flex h-full w-full items-center justify-center">
+      <svg
+        class="h-20 w-20 text-white/85 transition-transform duration-500 group-hover:scale-110"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d={iconPath} />
+      </svg>
+    </div>
+
+    <!-- 编号 -->
+    <span class="absolute start-3 top-3 rounded-md bg-white/15 px-2 py-1 text-[11px] font-bold tabular-nums text-white backdrop-blur-sm">
+      {index}
+    </span>
+
+    <!-- 可定制徽标 -->
+    <span class="absolute end-3 top-3 inline-flex items-center gap-1 rounded-md bg-accent-500 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+      {customizableLabel}
+    </span>
+
+    <!-- 底部渐隐，衔接内容区 -->
+    <div class="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/15 to-transparent"></div>
+  </div>
+
+  <!-- ==================== 内容 ==================== -->
+  <div class="flex flex-1 flex-col p-5 sm:p-6">
+    <h3 class="text-base font-bold leading-snug text-brand-700 sm:text-[17px]">
+      {name}
+    </h3>
+
+    <p class="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
+      {short}
+    </p>
+
+    <!-- 真实规格（2-3 条） -->
+    {specs.length > 0 && (
+      <dl class="mt-4 space-y-2 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3">
+        {specs.map((s) => (
+          <div class="flex items-baseline justify-between gap-3 text-xs">
+            <dt class="shrink-0 font-semibold text-slate-500">{s.key}</dt>
+            <dd dir="auto" class="text-end font-medium text-brand-800">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+
+    {applications && (
+      <div class="mt-4 flex items-start gap-2 border-t border-slate-100 pt-4">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" />
+        </svg>
+        <p dir="auto" class="text-xs leading-relaxed text-slate-500">
+          <span class="font-semibold text-slate-600">{applicationsLabel}:</span>
+          {' '}{applications}
+        </p>
+      </div>
+    )}
+
+    <a
+      href={getLocalizedPath(locale, 'contact')}
+      class="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-600 transition-colors hover:text-accent-600"
+    >
+      {learnMoreLabel}
+      <svg class="h-4 w-4 flip-rtl nudge-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" />
+      </svg>
+    </a>
+  </div>
+</article>
