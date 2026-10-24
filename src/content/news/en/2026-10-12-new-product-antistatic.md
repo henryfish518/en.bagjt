@@ -37,4 +37,4 @@ TYPE-D does not require grounding during loading and unloading — the antistati
 
 Minimum order quantity is 500 pcs. Production time is 12–15 working days. Custom printing of your logo (1–3 colours) is available.
 
-For a price calculation and samples, use the form on the [Contact](/en/contact/) page or email us directly.
+For a price calculation and samples, use the form on the [Contact](/contact/) page or email us directly.

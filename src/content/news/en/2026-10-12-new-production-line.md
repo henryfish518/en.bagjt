@@ -22,4 +22,4 @@ The line is designed for bulk bags with a safety factor of 5:1 and 6:1, load cap
 
 Next year we plan to expand our food-grade FIBC section and increase the stock of popular sizes 90×90×110 and 100×100×120 cm.
 
-For a quotation and lead times, use the form on the [Contact](/en/contact/) page or email us directly.
+For a quotation and lead times, use the form on the [Contact](/contact/) page or email us directly.

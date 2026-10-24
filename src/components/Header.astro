@@ -81,7 +81,7 @@ const waText =
           {t.brand.name}
         </span>
         <span class="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-accent-500">
-          BAGJT.COM · ME
+          BAGJT.COM
         </span>
       </span>
     </a>
@@ -106,8 +106,8 @@ const waText =
 
     <!-- 右侧操作区 -->
     <div class="flex items-center gap-2">
-      <!-- ============ AR / EN 语言切换器 ============ -->
-      <div class="flex items-center rounded-lg border border-slate-200 bg-slate-50 p-0.5" role="group" aria-label={t.common.langSwitchLabel}>
+      <!-- ============ 语言切换器（单语站不显示） ============ -->
+      <div class:list={["flex items-center rounded-lg border border-slate-200 bg-slate-50 p-0.5", other === locale && "hidden"]} role="group" aria-label={t.common.langSwitchLabel}>
         <span
           class="rounded-md bg-white px-2.5 py-1.5 text-xs font-bold text-brand-700 shadow-sm"
           aria-current="true"
@@ -178,15 +178,17 @@ const waText =
         <a href={getLocalizedPath(locale, 'contact')} class="btn-accent flex-1">
           {t.common.getQuote}
         </a>
-        <a
-          href={switchHref}
-          hreflang={other}
-          lang={other}
-          class="btn-outline !px-4"
-          title={`${t.common.switchTo} — ${LOCALE_LABEL[other]}`}
-        >
-          {LOCALE_SHORT[other]}
-        </a>
+        {other !== locale && (
+          <a
+            href={switchHref}
+            hreflang={other}
+            lang={other}
+            class="btn-outline !px-4"
+            title={`${t.common.switchTo} — ${LOCALE_LABEL[other]}`}
+          >
+            {LOCALE_SHORT[other]}
+          </a>
+        )}
       </div>
     </div>
   </nav>

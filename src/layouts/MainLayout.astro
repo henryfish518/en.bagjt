@@ -74,11 +74,11 @@ const orgJsonLd = {
     {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      availableLanguage: ['ar', 'en', 'zh'],
+      availableLanguage: ['en', 'zh'],
       areaServed: [...AREA_SERVED],
     },
   ],
-  knowsLanguage: ['ar', 'en'],
+  knowsLanguage: ['en'],
   slogan: t.brand.tagline,
 };
 
@@ -122,10 +122,6 @@ const skipLabel = locale === 'ar' ? 'تخطَّ إلى المحتوى' : 'Skip t
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={meta.ogLocale} />
-    <meta
-      property="og:locale:alternate"
-      content={locale === 'ar' ? LOCALE_META.en.ogLocale : LOCALE_META.ar.ogLocale}
-    />
 
     <!-- ============ Twitter Card ============ -->
     <meta name="twitter:card" content="summary_large_image" />

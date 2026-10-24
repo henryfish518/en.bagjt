@@ -14,44 +14,28 @@ import { SITE } from '@/config';
 
 export async function getStaticPaths() {
   const posts = await getCollection('news', ({ data }) => !data.draft);
-  const byLang: Record<string, Map<string, (typeof posts)[number]>> = { ar: new Map(), en: new Map() };
+  const byLang: Record<string, Map<string, (typeof posts)[number]>> = { en: new Map() };
   for (const post of posts) {
     const [lang, slug] = post.id.replace(/\\/g, '/').split('/');
     byLang[lang]?.set(slug, post);
   }
-  return Object.entries(byLang).flatMap(([lang, map]) =>
-    [...map.entries()].map(([slug, entry]) => ({ params: { lang, slug }, props: { entry } })),
-  );
+  return [...byLang['en'].entries()].map(([slug, entry]) => ({ params: { slug }, props: { entry } }));
 }
 
-const { lang } = Astro.params as { lang: Locale };
-const locale = lang;
+const locale: Locale = 'en'; // 单语站：根路径直出
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 const { title, date, description, cover } = entry.data;
 const mySlug = entry.id.replace(/\\/g, '/').split('/')[1];
-const other: Locale = locale === 'ar' ? 'en' : 'ar';
 const t = useTranslations(locale);
 
-/** hreflang：仅当另一语言存在同名文章时输出 */
-const otherPost = await getCollection(
-  'news',
-  ({ id, data }) => !data.draft && id.replace(/\\/g, '/') === `${other}/${mySlug}`,
-);
+/** 单语站：hreflang 只输出自身（MainLayout 会自动补 x-default） */
 const alternates = [
   {
     hreflang: LOCALE_META[locale].hreflang,
     href: new URL(getLocalizedPath(locale, `news/${mySlug}`), SITE.url).href,
   },
-  ...(otherPost.length > 0
-    ? [
-        {
-          hreflang: LOCALE_META[other].hreflang,
-          href: new URL(getLocalizedPath(other, `news/${mySlug}`), SITE.url).href,
-        },
-      ]
-    : []),
 ];
 
 const fmt = new Intl.DateTimeFormat(INTL_LOCALE[locale], {

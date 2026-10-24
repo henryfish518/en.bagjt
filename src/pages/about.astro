@@ -10,12 +10,7 @@ import SectionHeader from '@/components/SectionHeader.astro';
 import CtaBand from '@/components/CtaBand.astro';
 import { useTranslations, type Locale, getLocalizedPath } from '@/i18n';
 
-export function getStaticPaths() {
-  return [{ params: { lang: 'ar' } }, { params: { lang: 'en' } }];
-}
-
-const { lang } = Astro.params as { lang: Locale };
-const locale = lang;
+const locale: Locale = 'en'; // 单语站：根路径直出
 const isAr = locale === 'ar';
 const t = useTranslations(locale);
 const a = t.about;

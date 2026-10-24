@@ -2,7 +2,7 @@
   "meta": {
     "siteName": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
     "siteShortName": "Hongyun Jiangtian",
-    "domain": "ar.bagjt.com",
+    "domain": "en.bagjt.com",
     "defaultLocale": "ar"
   },
   "common": {
@@ -26,7 +26,7 @@
   "brand": {
     "name": "Hongyun Jiangtian",
     "fullName": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd",
-    "tagline": "FIBC Bulk Bag Manufacturer from China. Supply to the Middle East"
+    "tagline": "FIBC Bulk Bag Manufacturer from China. Supplying Worldwide"
   },
   "nav": {
     "home": "Home",
@@ -37,15 +37,15 @@
   },
   "home": {
     "meta": {
-      "title": "FIBC Bulk Bag Manufacturer from China | Supply to the Middle East — Hongyun Jiangtian",
-      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd is a professional PP FIBC big bag manufacturer in China. Custom size, load capacity, conductive and food-grade bulk bags. Stable supply to Saudi Arabia, the UAE, Egypt, Iraq and the wider Middle East, with strict quality control.",
-      "keywords": "FIBC, big bag, bulk bag, jumbo bag, PP woven bag, China manufacturer, Saudi Arabia, UAE, Dubai, Egypt, Iraq, Middle East, food grade, conductive bag"
+      "title": "FIBC Bulk Bag Manufacturer from China | Factory-Direct & Customizable — Hongyun Jiangtian",
+      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd is a professional PP FIBC big bag manufacturer in China. Custom size, load capacity, conductive and food-grade bulk bags. Exporting to 30+ countries worldwide with strict quality control and stable delivery.",
+      "keywords": "FIBC, big bag, bulk bag, jumbo bag, PP woven bag, China manufacturer, factory direct, food grade, conductive bag"
     },
     "hero": {
       "badge": "Direct from factory · 5 own plants · Since 2008",
       "title": "FIBC Bulk Bag Manufacturer from China",
-      "titleAccent": "Supply to the Middle East",
-      "subtitle": "Professional production of PP FIBC big bags and container bags. Customized dimensions, load capacity, conductive and food-grade options. Arabic and English sales support, strict quality inspection and stable delivery schedules.",
+      "titleAccent": "Factory-Direct & Customizable",
+      "subtitle": "Professional production of PP FIBC big bags and container bags. Customized dimensions, load capacity, conductive and food-grade options. English-speaking sales support, strict quality inspection and stable delivery schedules.",
       "primaryCta": "Request a Quote",
       "secondaryCta": "View Products",
       "stats": [
@@ -70,7 +70,7 @@
     },
     "features": {
       "eyebrow": "Why choose us",
-      "title": "A reliable FIBC supplier for Middle East buyers",
+      "title": "A reliable FIBC supplier for global buyers",
       "subtitle": "From raw material to finished bag, every step is controlled in our own plant.",
       "items": [
         {
@@ -83,7 +83,7 @@
         },
         {
           "title": "Export-ready quality",
-          "desc": "Safety factor 5:1 / 6:1, batch testing, and documentation prepared for customs clearance in the Gulf and wider MENA region."
+          "desc": "Safety factor 5:1 / 6:1, batch testing, and documentation prepared for customs clearance for export shipments."
         },
         {
           "title": "Stable delivery",
@@ -226,8 +226,8 @@
   "products": {
     "meta": {
       "title": "FIBC Big Bag Products — Standard, Conductive, Food Grade, Liner | Hongyun Jiangtian",
-      "description": "Our FIBC bulk bag and container bag range: universal, food grade, heavy duty, inner baffle, acid & alkali resistant, heat resistant, antistatic TYPE-C and conductive TYPE-D. Load capacity 500–2000 kg, custom sizes and printing. Supplied to the Middle East.",
-      "keywords": "FIBC types, universal bulk bag, food grade bulk bag, heavy duty bulk bag, inner baffle bulk bag, acid resistant bulk bag, heat resistant container bag, TYPE-C bulk bag, TYPE-D bulk bag, antistatic FIBC, bulk bag Saudi Arabia, bulk bag UAE"
+      "description": "Our FIBC bulk bag and container bag range: universal, food grade, heavy duty, inner baffle, acid & alkali resistant, heat resistant, antistatic TYPE-C and conductive TYPE-D. Load capacity 500–2000 kg, custom sizes and printing. Exported worldwide.",
+      "keywords": "FIBC types, universal bulk bag, food grade bulk bag, heavy duty bulk bag, inner baffle bulk bag, acid resistant bulk bag, heat resistant container bag, TYPE-C bulk bag, TYPE-D bulk bag, antistatic FIBC, bulk bag exporter"
     },
     "hero": {
       "eyebrow": "Products",
@@ -260,8 +260,8 @@
   "about": {
     "meta": {
       "title": "About Us — PP FIBC Bulk Bag Manufacturer in Foshan, China | Hongyun Jiangtian",
-      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd has been a PP FIBC bulk bag manufacturer since 2008. 5 own factories, 5 distribution warehouses, annual output over 10 million bags. ISO 9001 and SGS certified. Supplying the Middle East and North Africa.",
-      "keywords": "FIBC manufacturer China, bulk bag factory Foshan, PP big bag supplier, export to Saudi Arabia, export to UAE, packaging materials company, ISO 9001 FIBC"
+      "description": "Foshan Hongyun Jiangtian Packaging Materials Co., Ltd has been a PP FIBC bulk bag manufacturer since 2008. 5 own factories, 5 distribution warehouses, annual output over 10 million bags. ISO 9001 and SGS certified. Supplying customers worldwide.",
+      "keywords": "FIBC manufacturer China, bulk bag factory Foshan, PP big bag supplier, global export, packaging materials company, ISO 9001 FIBC"
     },
     "hero": {
       "eyebrow": "About us",
@@ -321,8 +321,8 @@
           "desc": "In 2005 we fulfilled an order for the United States Postal Service. Customers include Sinopec, PetroChina, Conch Cement, COFCO and China Salt."
         },
         {
-          "title": "Arabic & English support",
-          "desc": "Arabic and English speaking sales support, technical answers within one working day, and a quotation within 24 hours."
+          "title": "Responsive sales support",
+          "desc": "English-speaking sales support, technical answers within one working day, and a quotation within 24 hours."
         }
       ]
     },
@@ -435,7 +435,7 @@
     },
     "markets": {
       "title": "Markets we serve",
-      "subtitle": "Exporting to over 30 countries. The Middle East is one of our priority markets.",
+      "subtitle": "Exporting to over 30 countries across five continents.",
       "items": [
         {
           "region": "Saudi Arabia",
@@ -464,20 +464,20 @@
   "contact": {
     "meta": {
       "title": "Contact Us — FIBC Bulk Bag Supplier, Foshan China | Hongyun Jiangtian",
-      "description": "Contact Foshan Hongyun Jiangtian Packaging Materials Co., Ltd for FIBC bulk bag quotations. WhatsApp and email inquiry welcome, in Arabic or English. Factory in Foshan City, Guangdong Province, China.",
-      "keywords": "contact FIBC supplier, bulk bag quotation, WhatsApp FIBC manufacturer, Foshan packaging factory contact, FIBC supplier Middle East"
+      "description": "Contact Foshan Hongyun Jiangtian Packaging Materials Co., Ltd for FIBC bulk bag quotations. WhatsApp and email inquiry welcome, in English. Factory in Foshan City, Guangdong Province, China.",
+      "keywords": "contact FIBC supplier, bulk bag quotation, WhatsApp FIBC manufacturer, Foshan packaging factory contact, FIBC supplier worldwide"
     },
     "hero": {
       "eyebrow": "Contact",
       "title": "Contact us",
-      "subtitle": "Send us your requirement — bag type, size, capacity and quantity — and we will reply with a quotation within 24 hours on working days. We answer in Arabic and English."
+      "subtitle": "Send us your requirement — bag type, size, capacity and quantity — and we will reply with a quotation within 24 hours on working days. We answer in English."
     },
     "info": {
       "title": "Contact information",
       "subtitle": "The fastest way to reach us is WhatsApp or email.",
       "companyLabel": "Company",
       "siteLabel": "Website",
-      "siteValue": "ar.bagjt.com",
+      "siteValue": "en.bagjt.com",
       "whatsappLabel": "WhatsApp",
       "whatsappValue": "[ RESERVED — fill in your WhatsApp number ]",
       "emailLabel": "Email",
@@ -549,8 +549,8 @@
           "a": "Every order passes raw material verification, in-process inspection and a pre-shipment inspection with photo reports. Load testing verifies the safety factor 5:1 / 6:1."
         },
         {
-          "q": "Do you ship to the Middle East?",
-          "a": "Yes. The Middle East is one of our main export markets. We arrange shipment to your designated port — Jebel Ali, Dammam, Alexandria, Umm Qasr and others — and we prepare the documentation required for customs clearance."
+          "q": "Do you ship worldwide?",
+          "a": "Yes. We export to 30+ countries worldwide. We arrange shipment to your designated port and prepare the documentation required for customs clearance."
         },
         {
           "q": "Do you accept OEM and custom printing?",
@@ -571,12 +571,12 @@
     "companyTitle": "Company",
     "contactTitle": "Contact",
     "languageTitle": "Language",
-    "keywords": "FIBC big bag, bulk bag, container bag, PP woven bag, jumbo bag, China manufacturer, ISO 9001, SGS, TYPE-C bulk bag, TYPE-D bulk bag, food grade bulk bag, Saudi Arabia, UAE, Middle East"
+    "keywords": "FIBC big bag, bulk bag, container bag, PP woven bag, jumbo bag, China manufacturer, ISO 9001, SGS, TYPE-C bulk bag, TYPE-D bulk bag, food grade bulk bag, worldwide"
   },
   "news": {
     "meta": {
       "title": "News & Articles — FIBC Bulk Bag Manufacturing | Hongyun Jiangtian",
-      "description": "Company news and practical articles about FIBC bulk bags: production, shipments to the Middle East, trade fairs, selection and operation of FIBC containers.",
+      "description": "Company news and practical articles about FIBC bulk bags: production, export shipments, trade fairs, selection and operation of FIBC containers.",
       "keywords": "FIBC news, bulk bag articles, FIBC manufacturing, shipments to Saudi Arabia, Hongyun Jiangtian"
     },
     "hero": {
